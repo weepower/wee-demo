@@ -3,7 +3,9 @@ import $store from 'wee-store';
 import Vue from 'vue';
 import cartOptions from './index.vue';
 
-export const cartStore = $store.create('local');
+export const cartStore = $store.create('cart', {
+	browserStorage: 'session'
+});
 
 // Create component constructor
 export const Cart = Vue.extend(cartOptions);

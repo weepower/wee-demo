@@ -31,8 +31,10 @@ import { cartStore } from './index.js';
 export default {
 	name: 'cart',
 	mounted() {
-		if (cartStore.get('items')) {
-			this.items = cartStore.get('items');
+		let data = cartStore.get('items');
+
+		if (data) {
+			this.items = data;
 		}
 
 		$mediator.on('cart.add', this.update);
@@ -96,6 +98,7 @@ export default {
 		},
 		update(newItem) {
 			this.items.push(newItem);
+			cartStore.set('items', this.items);
 		}
 	}
 }
