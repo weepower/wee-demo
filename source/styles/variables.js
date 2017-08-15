@@ -20,4 +20,6 @@ heading.weight = 500;
 icon.checkmark = 'ea10';
 icon.cart = 'e93a';
 
+icon.family = 'icomoon';
+
 module.exports = register(v);
