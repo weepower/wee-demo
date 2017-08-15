@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" id="global" itemscope itemtype="http://schema.org/WebPage">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+	<title>Wee Swag | The swaggiest swag</title>
+	<meta name="description" content="Blueprint for modern web development.">
+
+	<link rel="stylesheet" href="/assets/styles/style.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Heebo:300,400,500">
+
+	<link rel="apple-touch-icon" href="/assets/images/icons/touch.png">
+	<link rel="mask-icon" href="/assets/images/icons/pin.svg" color="#349bb9">
+	<link rel="publisher" href="https://plus.google.com/+weecss">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@weecss">
+
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Wee">
+	<meta property="og:title" content="Front-End Framework" itemprop="name">
+	<meta property="og:description" content="Blueprint for modern web development." itemprop="description">
+	<meta property="og:url" content="https://www.weepower.com" itemprop="url">
+	<meta property="og:image" content="https://www.weepower.com/assets/images/share.png" itemprop="image">
+</head>
+<body>
+	{% include 'components/header.njk' %}
+	<div class="container content js-content">
+		{% block content %}{% endblock %}
+	</div>
+
+	<script src="/assets/scripts/app.bundle.js"></script>
+</body>
+<!-- <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+</html>

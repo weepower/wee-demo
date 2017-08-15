@@ -1,0 +1,49 @@
+.product-info {
+	&__title {
+		spaced(.5);
+	}
+	&__left {
+		spaced(4);
+	}
+	&__price {
+		spaced(2);
+		font-size: 2rem;
+		font-weight: $font.weight.bold;
+	}
+	&__subtitle {
+		spaced(2);
+		font-size: 1.7rem;
+		font-style: italic;
+		font-weight: $font.weight.normal;
+	}
+	&__meta {
+		spaced(4);
+	}
+}
+
+@tablet {
+	.product-info {
+		&__right {
+			row(6%);
+		}
+		&__meta,
+		&__product-options {
+			column(spaced, 1, 2, 6%);
+		}
+	}
+}
+
+@desktop {
+	.product-info {
+		row(6%);
+		&__left,
+		&__right {
+			rowReset();
+			column(spaced, 1, 2, 6%);
+		}
+		&__meta,
+		&__product-options {
+			columnReset();
+		}
+	}
+}

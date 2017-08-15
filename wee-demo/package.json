@@ -1,0 +1,31 @@
+{
+  "name": "wee-demo",
+  "version": "1.0.0",
+  "description": "Example website to demonstrate features and functionality of Wee",
+  "main": "index.js",
+  "scripts": {
+    "seed": "node data/seeds.js",
+    "start": "nodemon -e njk,js ./index.js"
+  },
+  "repository": "weepower/wee-demo",
+  "keywords": [
+    "css",
+    "framework",
+    "javascript"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/weepower/wee-demo/issues"
+  },
+  "homepage": "https://github.com/weepower/wee-demo#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "lodash.chunk": "^4.2.0",
+    "nunjucks": "^3.0.1",
+    "query-string": "^5.0.0"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "nodemon": "^1.11.0"
+  }
+}

@@ -1,0 +1,18 @@
+.color-selector {
+	spaced(2);
+	&__color {
+		circle(3);
+		inlineBlock();
+		scale(1);
+		spaced(1);
+		transition(transform);
+		cursor: pointer;
+		margin-right: 1.5rem;
+		&.-light {
+			border(width: 2px);
+		}
+		&.-is-active {
+			scale(1.2);
+		}
+	}
+}

@@ -1,0 +1,16 @@
+.breadcrumbs {
+	unstyled();
+	&__crumb {
+		display: inline-block;
+		font-size: 1.3rem;
+		margin-right: 1rem;
+		position: relative;
+		&:not(:last-child) {
+			&::after {
+				absolute(0, -1);
+				display: block;
+				content: '/';
+			}
+		}
+	}
+}

@@ -1,0 +1,63 @@
+/*------------------------------------*\
+	# Global
+\*------------------------------------*/
+
+loadFont(icomoon);
+
+body {
+	background-color: $colors.white;
+}
+
+.container {
+	centeredBlock(144);
+	padding(horizontal, 0);
+	height: 100%;
+}
+
+a {
+	transition(color);
+	color: $colors.blue;
+	&:hover {
+		color: $colors.lightBlue;
+	}
+}
+
+.button {
+	&.-small {
+		padding: .7rem 1.4rem;
+	}
+}
+
+
+
+
+
+/*------------------------------------*\
+	# Logo
+\*------------------------------------*/
+
+.logo {
+	&__ee {
+		transition();
+		opacity: 1;
+		&.-is-hidden {
+			opacity: 0;
+		}
+	}
+}
+
+
+
+
+
+/*------------------------------------*\
+	# Main
+\*------------------------------------*/
+
+.content {
+	crop(horizontal);
+	min-height: 60rem;
+	&.-is-fixed {
+		margin-top: 11.3rem;
+	}
+}

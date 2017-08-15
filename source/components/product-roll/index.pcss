@@ -1,0 +1,42 @@
+.product-roll {
+	spaced(4);
+	&__inner {
+		inlineRow(6%);
+	}
+	&__image {
+		spaced(2);
+		margin(horizontal, auto);
+		max-height: 5.7rem;
+	}
+	&__price {
+		text-align: center;
+	}
+	&__item {
+		inlineColumn(spaced, 1, 2, 6%);
+		spaced(6%);
+		transition(border-color);
+		background-color: $colors.offWhite;
+		border: 1px solid transparent;
+		text-align: center;
+		padding: 2rem;
+		&:hover {
+			border-color: $colors.blue;
+		}
+	}
+}
+
+@tablet {
+	.product-roll {
+		&__image {
+			max-height: 15rem;
+		}
+	}
+}
+
+@desktop {
+	.product-roll {
+		&__item {
+			inlineColumn(spaced, 1, 4, 6%);
+		}
+	}
+}

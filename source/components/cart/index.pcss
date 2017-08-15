@@ -1,0 +1,72 @@
+.cart {
+	cursor: pointer;
+	position: relative;
+	width: 3rem;
+	&__item {
+		&:not(:last-child) {
+			spaced(2);
+		}
+	}
+	&__list {
+		absolute(6, 0);
+		border();
+		unstyled();
+		background-color: $colors.white;
+		margin-bottom: 0;
+		padding: 1.4rem 1rem 1rem 1rem;
+		right: -50%;
+		width: 25rem;
+		&:before {
+			absolute(-11px, 2, false, false);
+			border();
+			content();
+			rotate(45);
+			square(20px);
+			background-color: $colors.white;
+			border-bottom: none;
+			border-right: none;
+			position: absolute;
+		}
+	}
+	&__item-name {
+		block();
+		spaced(1);
+		font-size: 1.5rem;
+		line-height: 1.3em;
+	}
+	&__item-remove {
+		color: $colors.primary;
+		font-size: 1.2rem;
+		&:hover {
+			color: red;
+		}
+	}
+	&__item {
+		flexContainer();
+	}
+	&__empty {
+		spaced(0);
+		padding: 10px 0;
+		text-align: center;
+	}
+	&__item-qty {
+		font-size: 1.2rem;
+		line-height: 1;
+	}
+	&__item-image {
+		size(5.8);
+		line-height: 1;
+		margin-right: 1rem;
+	}
+}
+
+@desktop2 {
+	.cart {
+		&__list {
+			right: -23px;
+			&:before {
+				right: 2.5rem;
+			}
+		}
+	}
+}

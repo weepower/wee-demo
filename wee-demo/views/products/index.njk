@@ -1,0 +1,30 @@
+{% if pjax %}
+	{% extends 'layouts/pjax.njk' %}
+{% else %}
+	{% extends 'layouts/master.njk' %}
+{% endif %}
+
+{% block content %}
+	<div class="product-index">
+		<div class="product-index__sidebar js-sidebar">
+			<div class="product-index__sidebar-toggle js-sidebar-toggle">x</div>
+			<div class="js-filters"></div>
+		</div>
+		<main role="main" class="product-index__content js-content">
+			<div class="product-index__actions">
+				{% include 'components/breadcrumbs.njk' %}
+				<button type="button" class="button colored-button -small js-sidebar-toggle sidebar__toggle-button">Filter</button>
+			</div>
+			{% if products.length %}
+				<div class="products">
+					{% for product in products %}
+						{% include 'components/product-card.njk' %}
+					{% endfor %}
+				</div>
+			{% else %}
+				<h2>No results!</h2>
+			{% endif %}
+		</main>
+		{% include 'components/pagination.njk' %}
+	</div>
+{% endblock %}

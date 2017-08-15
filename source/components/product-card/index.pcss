@@ -1,0 +1,45 @@
+.product-card {
+	cursor: pointer;
+	display: block;
+	margin-bottom: 4rem;
+	position: relative;
+	&:hover {
+		.product-card__image-wrap {
+			border: 1px solid $colors.blue;
+		}
+	}
+	&__title {
+		color: $colors.darkestGray;
+		text-align: center;
+		font-size: 1.8rem;
+		margin-bottom: 1;
+	}
+	&__subtitle {
+		text-align: center;
+	}
+	&__flag {
+		absolute(1, 1);
+		rounded(.3);
+		color: white;
+		font-size: 1.5rem;
+		background-color: $colors.black;
+		padding: 1.5rem 1.7rem;
+		z-index: 1;
+		&.-alt {
+			background-color: $colors.blue;
+		}
+	}
+	&__image {
+		margin-bottom: 1.7rem;
+		position: relative;
+		&-wrap {
+			transition(border);
+			border: 1px solid transparent;
+			background-color: $colors.offWhite;
+			padding: 2rem;
+		}
+	}
+	&__meta {
+		padding: 1.5rem;
+	}
+}

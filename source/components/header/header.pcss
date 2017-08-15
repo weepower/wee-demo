@@ -1,0 +1,26 @@
+.header {
+	flexContainer(justify: space-between);
+	transition();
+	background-color: $colors.white;
+	padding: 4rem 2.2rem;
+	position: relative;
+	z-index: 100;
+	&.-is-fixed {
+		position: fixed;
+		top: -11.3rem;
+		left: 0;
+		right: 0;
+	}
+	&.-is-transitioning {
+		transition(top);
+	}
+	&.-is-shown {
+		top: 0;
+	}
+}
+
+@desktop {
+	.header {
+		padding(horizontal, 3.5);
+	}
+}
