@@ -49,14 +49,12 @@ export default {
 	},
 	computed: {
 		totalItems() {
-			return this.items.reduce((sum, item) => sum + item.quantity, 0);
+			return this.items.length;
 		}
 	},
 
 	watch: {
 		isHidden(value) {
-			const scope = this;
-
 			if (value === true) {
 				this.disableBodyEvent();
 			} else {
@@ -87,6 +85,7 @@ export default {
 		},
 		removeItem(index) {
 			this.items.splice(index, 1);
+			cartStore.set('items', this.items);
 		},
 		toggleList(e) {
 			// Prevent closing cart list when clicking cart list directly
