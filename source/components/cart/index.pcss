@@ -2,6 +2,16 @@
 	cursor: pointer;
 	position: relative;
 	width: 3rem;
+	&__count {
+		background-color: $colors.primary;
+		color: $colors.white;
+		font-size: 1.2rem;
+		line-height: 1.8rem;
+		padding: .1rem .6rem;
+		text-align: center;
+		absolute(top: -.8rem, left: 1.8rem);
+		rounded(50%);
+	}
 	&__item {
 		&:not(:last-child) {
 			spaced(2);
