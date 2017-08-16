@@ -3,7 +3,7 @@
 	<h4 class="filter__title">{{ title }}</h4>
 	<div class="filter__type">
 		<component
-			:is="filterType"
+			:is="type"
 			:prefix="prefix"
 			:selection="filterValue"
 			:values="filterData"
@@ -22,31 +22,21 @@ import colorSelector from '../color-selector/index.vue';
 
 export default {
 	name: 'filter',
-	components: {
-		checkboxList,
-		toggleSwitch,
-		colorSelector
-	},
+	components: { checkboxList, toggleSwitch, colorSelector },
 	props: {
-		title: {
-			type: String,
-			default: ''
-		},
-		filterType: {
-			type: String,
-			default: ''
-		},
+		title: { type: String, default: '' },
+		type: { type: String, default: '' },
+		filterValue: {},
 		filterData: {
 			type: Array,
 			default() {
-				return []
+				return [];
 			}
 		},
-		filterValue: {},
 		filterOptions: {
 			type: Object,
 			default() {
-				return {}
+				return {};
 			}
 		}
 	},
