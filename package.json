@@ -35,6 +35,7 @@
     "watch:images": "onchange $npm_package_config_source/images -- npm run build:images",
     "watch": "npm-run-all -p watch:js watch:css watch:images",
     "start": "npm run --silent build && npm-run-all -p serve watch",
+    "demo": "node server/index.js && open -a '/Applications/Google Chrome.app' 'http://localhost:3000'",
     "wee": "wee"
   },
   "devDependencies": {
@@ -69,7 +70,7 @@
     "postcss-nested-selectors": "^0.1.1",
     "postcss-variable-media": "^0.2.0",
     "postcss-variables": "^1.0.1",
-    "postcss-wee-syntax": "^2.0.1",
+    "postcss-wee-syntax": "2.0.1",
     "vue-loader": "^13.0.0",
     "vue-template-compiler": "^2.1.10",
     "webpack": "^2.2.0",

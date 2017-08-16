@@ -1,6 +1,6 @@
 .header {
 	flexContainer(justify: space-between);
-	transition();
+	transition(top);
 	background-color: $colors.white;
 	padding: 4rem 2.2rem;
 	position: relative;
@@ -10,9 +10,6 @@
 		top: -11.3rem;
 		left: 0;
 		right: 0;
-	}
-	&.-is-transitioning {
-		transition(top);
 	}
 	&.-is-shown {
 		top: 0;
