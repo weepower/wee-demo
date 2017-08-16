@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const nunjucks = require('nunjucks');
+const childProcess = require('child_process');
 const paginate = require('./paginate');
 const generateCrumbs = require('./breadcrumbs');
 const db = require('./db');
@@ -8,13 +9,15 @@ const app = express();
 const port = 3000;
 
 // Set static file source
-app.use(express.static(path.resolve('../public')));
+app.use(express.static(path.resolve(__dirname + '/../public')));
 
 // Set templating engine
-nunjucks.configure('views', {
+nunjucks.configure(path.resolve(__dirname + '/views'), {
 	autoescape: true,
 	express: app
 });
+
+// app.set('views', __dirname + '/views');
 
 app.get('/', (req, res) => {
 	res.redirect('/products');
@@ -66,4 +69,11 @@ app.use((req, res) => {
 
 app.listen(port, () => {
 	console.log(`Wee demo listening on port: ${port}`);
+
+	childProcess.exec(`open -a "Google Chrome" http://localhost:${port}`, (error) => {
+		if (error) {
+			console.error(`exec error: ${error}`);
+			return;
+		}
+	});
 });
