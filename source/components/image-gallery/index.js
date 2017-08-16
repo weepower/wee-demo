@@ -11,7 +11,7 @@ function bindEvents() {
 
 		$(wrap).removeClass(classes.active);
 
-		$('.js-gallery-main-image').attr('src', $thumb.find('.js-gallery-thumb').attr('src'))
+		$('.js-gallery-main-image').attr('src', $thumb.find('.js-gallery-thumb').attr('src'));
 
 		$thumb.addClass(classes.active);
 	});
@@ -21,5 +21,5 @@ export default new RouteHandler({
 	init() {
 		bindEvents();
 	},
-	namespace: 'gallery'
+	unload: 'gallery'
 });
