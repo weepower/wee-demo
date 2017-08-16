@@ -19,7 +19,7 @@
 			:values="product.quantity"
 			v-model="quantity"
 		/>
-		<button type="button" class="button colored-button" @click="addToCart">Add to cart</button>
+		<w-button message="Added to cart!" @click="addToCart" colored>Add to cart</w-button>
 	</div>
 </template>
 
@@ -27,10 +27,11 @@
 import $store from 'wee-store';
 import $mediator from 'wee-mediator';
 import productOption from '../product-option/index.vue';
+import wButton from '../w-button/index.vue';
 
 export default {
 	name: 'product-options',
-	components: { productOption },
+	components: { productOption, wButton },
 	methods: {
 		addToCart() {
 			$mediator.emit('cart.add', {
@@ -42,10 +43,13 @@ export default {
 					alt: this.product.title
 				}
 			});
+
+			showNav();
 		}
 	},
 	data() {
 		return {
+			cartMessage: '',
 			product: $store.get('product'),
 			size: '',
 			color: '',

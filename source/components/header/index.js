@@ -61,5 +61,5 @@ export default new RouteHandler({
 	init() {
 		bindEvents();
 	},
-	namespace: 'header'
+	unload: 'header'
 });
