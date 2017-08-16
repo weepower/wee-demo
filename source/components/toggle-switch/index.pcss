@@ -10,12 +10,12 @@
 	&__item {
 		$innerToggleRadius: 3px;
 
+		transition(background-color, .06s);
 		flex: auto;
 		font-size: 1.3rem;
 		padding: 0.7rem 1.1rem;
 		user-select: none;
 		text-align: center;
-		transition(background-color, .06s);
 		&.-is-selected {
 			background-color: $toggleColor;
 			color: $colors.white;
@@ -28,8 +28,8 @@
 			background-color: $colors.lightestGray;
 		}
 		&:first-child {
-			border-right: solid 1px $toggleColor;
 			rounded(left, $innerToggleRadius);
+			border-right: solid 1px $toggleColor;
 		}
 		&:last-child {
 			rounded(right, $innerToggleRadius);

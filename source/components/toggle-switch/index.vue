@@ -1,7 +1,19 @@
 <template>
 <div class="toggle-switch">
-	<div class="toggle-switch__item" :class="{ '-is-selected': selectedValue === values[0].value }" @click="toggle(values[0].value)" v-text="values[0].title"></div>
-	<div class="toggle-switch__item" :class="{ '-is-selected': selectedValue === values[1].value }" @click="toggle(values[1].value)" v-text="values[1].title"></div>
+	<div
+		class="toggle-switch__item"
+		:class="{ '-is-selected': selectedValue === values[0].value }"
+		@click="toggle(values[0].value)"
+	>
+		{{ values[0].title }}
+	</div>
+	<div
+		class="toggle-switch__item"
+		:class="{ '-is-selected': selectedValue === values[1].value }"
+		@click="toggle(values[1].value)"
+	>
+		{{ values[1].title }}
+	</div>
 </div>
 </template>
 
@@ -9,23 +21,14 @@
 export default {
 	name: 'toggle-switch',
 	props: {
-		values: {
-			type: Array
-		},
-		selection: {
-			type: String,
-			default: ''
-		}
+		values: { type: Array },
+		selection: { type: String, default: '' }
 	},
 	data() {
 		return {
 			selectedValue: ''
 		};
 	},
-	mounted() {
-		this.selectedValue = this.selection;
-	},
-
 	watch: {
 		/**
 		 * Make sure that selectedValue changes whenever selection prop changes
@@ -35,6 +38,10 @@ export default {
 		selection(newValue) {
 			this.selectedValue = newValue;
 		}
+	},
+
+	mounted() {
+		this.selectedValue = this.selection;
 	},
 
 	methods: {
@@ -54,11 +61,7 @@ export default {
 		 * @param  {string} newValue
 		 */
 		toggle(newValue) {
-			if (this.selectedValue === newValue) {
-				this.selectedValue = '';
-			} else {
-				this.selectedValue = newValue;
-			}
+			this.selectedValue = this.selectedValue === newValue ? '' : newValue;
 
 			this.$emit('input', this.selectedValue);
 		}
