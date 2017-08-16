@@ -4,35 +4,35 @@
 	<a href="#" class="filters__clear" v-if="hasSelection" @click.prevent="resetSelections">Reset Filters</a>
 	<filter-section
 		title="Featured"
-		filter-type="toggle-switch"
+		type="toggle-switch"
 		:filter-data="tags"
 		:filter-value="selections.tag"
 		@input="update('tag', $event)"
 	/>
 	<filter-section
 		title="Category"
-		filter-type="checkbox-list"
+		type="checkbox-list"
 		:filter-data="categories"
 		:filter-value="selections.category"
 		@input="update('category', $event)"
 	/>
 	<filter-section
 		title="Size"
-		filter-type="checkbox-list"
+		type="checkbox-list"
 		:filter-data="sizes"
 		:filter-value="selections.size"
 		@input="update('size', $event)"
 	/>
 	<filter-section
 		title="Gender"
-		filter-type="checkbox-list"
+		type="checkbox-list"
 		:filter-data="genders"
 		:filter-value="selections.gender"
 		@input="update('gender', $event)"
 	/>
 	<filter-section
 		title="Color"
-		filter-type="color-selector"
+		type="color-selector"
 		:filter-data="colors"
 		:filter-value="selections.color"
 		:filter-options="{ multiple: true }"
@@ -61,60 +61,24 @@ export default {
 	data() {
 		return {
 			genders: [
-				{
-					title: 'Unisex',
-					value: 'unisex'
-				},
-				{
-					title: "Women's",
-					value: 'womens'
-				},
-				{
-					title: "Men's",
-					value: 'mens'
-				}
+				{ title: 'Unisex', value: 'unisex' },
+				{ title: "Women's", value: 'womens' },
+				{ title: "Men's", value: 'mens'}
 			],
 			sizes: [
-				{
-					title: 'Small',
-					value: 'small'
-				},
-				{
-					title: 'Medium',
-					value: 'medium'
-				},
-				{
-					title: 'Large',
-					value: 'large'
-				},
-				{
-					title: 'X Large',
-					value: 'x-large'
-				}
+				{ title: 'Small', value: 'small' },
+				{ title: 'Medium', value: 'medium' },
+				{ title: 'Large', value: 'large' },
+				{ title: 'X Large', value: 'x-large' }
 			],
 			categories: [
-				{
-					title: 'Shirts',
-					value: 'shirts'
-				},
-				{
-					title: 'Hats',
-					value: 'hats'
-				},
-				{
-					title: 'Hoodies',
-					value: 'hoodies'
-				}
+				{ title: 'Shirts', value: 'shirts' },
+				{ title: 'Hats', value: 'hats' },
+				{ title: 'Hoodies', value: 'hoodies' }
 			],
 			tags: [
-				{
-					title: 'New',
-					value: 'new'
-				},
-				{
-					title: 'Best Seller',
-					value: 'best-seller'
-				}
+				{ title: 'New', value: 'new' },
+				{ title: 'Best Seller', value: 'best-seller' }
 			],
 			colors: [
 				{ title: 'yellow', value: '#ff9B57' },
@@ -126,9 +90,6 @@ export default {
 			],
 			selections: $copy(selectionOptions)
 		}
-	},
-	created() {
-		this.refreshSelections();
 	},
 
 	computed: {
@@ -149,17 +110,18 @@ export default {
 		 * @return {boolean}
 		 */
 		hasSelection() {
-			let hasSelection = false;
-
 			for (let prop in this.selections) {
 				if (this.selections[prop].length) {
-					hasSelection = true;
-					break;
+					return true;
 				}
 			}
 
-			return hasSelection;
+			return false;
 		}
+	},
+
+	created() {
+		this.refreshSelections();
 	},
 
 	methods: {
@@ -169,9 +131,7 @@ export default {
 		resetSelections() {
 			this.selections = $copy(selectionOptions);
 
-			$router.push({
-				path: url
-			});
+			$router.push({ path: url });
 		},
 
 		/**
@@ -210,26 +170,7 @@ export default {
 				}
 			}
 
-			// Remove query string properties not relevant to selections
-			for (let filter in filters) {
-				if (! this.selections.hasOwnProperty(filter)) {
-					delete filters[filter];
-				}
-			}
-
 			this.selections = filters;
-		},
-
-		/**
-		 * Set filter value if defined in initial state
-		 *
-		 * @param {string} key
-		 * @param {*} value [description]
-		 */
-		setFilterValue(key, value) {
-			if (this.selections.hasOwnProperty(key)) {
-				this.selections[key] = value;
-			}
 		},
 
 		/**
@@ -241,8 +182,12 @@ export default {
 		update(key, value) {
 			let params = uri().query;
 
-			this.selections[key] = value;
-			params[key] = value;
+			// Don't allow properties to be added that
+			// were not in original data model
+			if (this.selections.hasOwnProperty(key)) {
+				this.selections[key] = value;
+				params[key] = value;
+			}
 
 			// Assumed that all filters are either string or array
 			// so we can check length

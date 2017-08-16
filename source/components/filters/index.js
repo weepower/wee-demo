@@ -14,7 +14,6 @@ let filters;
 export default new RouteHandler({
 	init() {
 		filters = new Filters().$mount(classes.target);
-		window._filters = filters;
 	},
 	update(to) {
 		$(classes.target).append(filters.$el);
