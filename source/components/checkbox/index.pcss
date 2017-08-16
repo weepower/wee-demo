@@ -7,11 +7,11 @@
 	cursor: pointer;
 	font-size: 1.4rem;
 	&__label {
+		block();
+		padding(vertical, $padding);
 		cursor: pointer;
 		height: calc($padding * 2 + $checkboxHeight);
 		position: relative;
-		block();
-		padding(vertical, $padding);
 		&::before {
 			content();
 			rounded(2px);

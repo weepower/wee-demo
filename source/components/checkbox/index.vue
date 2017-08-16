@@ -1,8 +1,8 @@
 <template>
 <div class="checkbox">
-	<input type="checkbox" class="checkbox__input" :name="inputValue" :checked="isSelected" @change="check" :id="id">
-	<label :for="id" class="checkbox__label">
-		<span class="checkbox__title" v-text="title"></span>
+	<input type="checkbox" class="checkbox__input" :name="inputValue" :id="id" :checked="isSelected" @change="check">
+	<label class="checkbox__label" :for="id">
+		<span class="checkbox__title">{{ title }}</span>
 	</label>
 </div>
 </template>
@@ -11,26 +11,24 @@
 export default {
 	name: 'checkbox',
 	props: {
-		inputValue: {
-			type: String
-		},
-		isSelected: {
-			type: Boolean
-		},
-		prefix: {
-			type: String
-		},
-		title: {
-			type: String
-		}
+		inputValue: { type: String },
+		isSelected: { type: Boolean },
+		prefix: { type: String },
+		title: { type: String }
 	},
 	data() {
 		return {
 			checked: false
 		};
 	},
-	mounted() {
-		this.checked = this.isSelected;
+	computed: {
+		/**
+		 * Generate unique id for checkbox
+		 * @return {string}
+		 */
+		id() {
+			return `${this.prefix.toLowerCase()}-${this.inputValue}`;
+		}
 	},
 	watch: {
 		/**
@@ -42,14 +40,8 @@ export default {
 			this.checked = newValue;
 		}
 	},
-	computed: {
-		/**
-		 * Generate unique id for checkbox
-		 * @return {string}
-		 */
-		id() {
-			return `${this.prefix.toLowerCase()}-${this.inputValue}`;
-		}
+	mounted() {
+		this.checked = this.isSelected;
 	},
 	methods: {
 		/**
