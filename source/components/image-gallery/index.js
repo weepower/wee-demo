@@ -21,5 +21,5 @@ export default new RouteHandler({
 	init() {
 		bindEvents();
 	},
-	namespace: 'gallery'
+	unload: 'gallery'
 });
