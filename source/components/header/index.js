@@ -8,7 +8,7 @@ const $header = $('.js-header');
 const $content = $('.js-content');
 const $logoEE = $('.js-logo-ee');
 const headerHeight = $header.height(true);
-const state = {
+let state = {
 	scrolled: false,
 	shown: false,
 	prevPosition: 0
@@ -28,8 +28,7 @@ function handleScroll() {
 		state.scrolled = true;
 	} else if (pos === 0 && state.scrolled) {
 		$header.removeClass(classes.fixed)
-			.removeClass(classes.shown)
-			.removeClass(classes.transitioning);
+			.removeClass(classes.shown);
 		$content.removeClass(classes.fixed);
 		$logoEE.removeClass(classes.hidden);
 
@@ -40,14 +39,9 @@ function handleScroll() {
 		if (state.shown && pos >= state.prevPosition) {
 			$header.removeClass(classes.shown);
 
-			setTimeout(() => {
-				$header.removeClass(classes.transitioning);
-			}, 200);
-
 			state.shown = false;
 		} else if (! state.shown && pos <= state.prevPosition) {
-			$header.addClass(classes.transitioning)
-				.addClass(classes.shown);
+			$header.addClass(classes.shown);
 
 			state.shown = true;
 		}
@@ -60,13 +54,7 @@ function handleScroll() {
  * Bind events
  */
 function bindEvents() {
-	$events.on({
-		window: {
-			scroll: handleScroll
-		}
-	}, {
-		namespace: 'header'
-	});
+	$events.on(_win, 'scroll.header', handleScroll);
 }
 
 export default new RouteHandler({
