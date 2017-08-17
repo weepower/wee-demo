@@ -1,6 +1,6 @@
 <template>
 	<div class="product-option">
-		<h5 class="product-option__title" v-text="title"></h5>
+		<h5 class="product-option__title">{{ title }}</h5>
 		<component
 			:is="type"
 			:default-value="defaultValue"
@@ -22,14 +22,8 @@ export default {
 	props: {
 		defaultValue: null,
 		values: null,
-		type: {
-			default: '',
-			type: String
-		},
-		title: {
-			default: '',
-			type: String
-		}
+		type: { type: String, default: '' },
+		title: { type: String, default: '' }
 	},
 	data() {
 		return {
