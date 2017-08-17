@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
 	<div class="color-selector">
 		<div
 			class="color-selector__color"
@@ -14,6 +14,7 @@
 export default {
 	name: 'color-selector',
 	props: {
+		values: { type: Array },
 		options: {
 			type: Object,
 			default() {
@@ -27,19 +28,26 @@ export default {
 			}
 		},
 		selection: {
-			type: [Object, Array],
-			default() {
-				return [];
-			}
-		},
-		values: {
-			type: Array
+			type: [Object, Array]
 		}
 	},
-	/**
-	 * Set default selection to first color
-	 */
+	data() {
+		return {
+			selected: []
+		}
+	},
+	watch: {
+		/**
+		 * Watch the selected property to emit the input event whenever it's
+		 * changed
+		 */
+		selected() {
+			this.$emit('input', this.selected);
+		}
+	},
+
 	mounted() {
+		// Set default selection to first color
 		if (this.defaultValue.title) {
 			this.selected.push(this.defaultValue.title);
 		}
@@ -54,6 +62,7 @@ export default {
 			});
 		}
 	},
+
 	methods: {
 		/**
 		 * Check the selected colors to determine whether color is selected
@@ -63,6 +72,7 @@ export default {
 		isSelected(color) {
 			return this.selected.indexOf(color) > -1;
 		},
+
 		/**
 		 * Select a color if no color is selected, otherwise deselect the color and
 		 * pass the event to the parent component
@@ -79,20 +89,6 @@ export default {
 					this.selected = [color];
 				}
 			}
-		}
-	},
-	watch: {
-		/**
-		 * Watch the selected property to emit the input event whenever it's
-		 * changed
-		 */
-		selected() {
-			this.$emit('input', this.selected);
-		}
-	},
-	data() {
-		return {
-			selected: []
 		}
 	}
 }
