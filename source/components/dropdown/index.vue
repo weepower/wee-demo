@@ -2,9 +2,8 @@
 	<select class="select dropdown" v-model="selected" @change="$emit('input', selected)">
 		<option
 			v-for="value in values"
-			v-text="value.title"
 			:value="value.slug"
-		></option>
+		>{{ value.title }}</option>
 	</select>
 </template>
 
@@ -12,20 +11,16 @@
 export default {
 	name: 'dropdown',
 	props: {
-		values: {
-			type: [Object, Array]
-		}
-	},
-	/**
-	 * Set the default selected option
-	 */
-	created() {
-		this.selected = this.values[0].slug;
+		values: { type: Array }
 	},
 	data() {
 		return {
 			selected: ''
 		}
-	}
+	},
+	created() {
+		// Set the default selected option
+		this.selected = this.values[0].slug;
+	},
 }
 </script>
