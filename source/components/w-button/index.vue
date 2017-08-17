@@ -12,36 +12,11 @@
 <script>
 export default {
 	props: {
-		colored: {
-			type: Boolean,
-			default: false
-		},
-		classes: {
-			type: String,
-			default: ''
-		},
-		message: {
-			type: String,
-			default: ''
-		},
-		timeout: {
-			type: Number,
-			default: 2
-		},
-		transitionName: {
-			type: String,
-			default: 'fade'
-		}
-	},
-	methods: {
-		showMessage() {
-			this.$emit('click');
-			this.showing = true;
-
-			setTimeout(() => {
-				this.showing = false;
-			}, this.timeout * 1000);
-		}
+		colored: { type: Boolean, default: false },
+		classes: { type: String, default: '' },
+		message: { type: String, default: '' },
+		timeout: { type: Number, default: 2 },
+		transitionName: { type: String, default: 'fade' }
 	},
 	data() {
 		return {
@@ -51,6 +26,19 @@ export default {
 				'colored-button': this.colored
 			}
 		};
+	},
+	methods: {
+		/**
+		 * Show message box
+		 */
+		showMessage() {
+			this.$emit('click');
+			this.showing = true;
+
+			setTimeout(() => {
+				this.showing = false;
+			}, this.timeout * 1000);
+		}
 	}
 }
 </script>
