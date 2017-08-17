@@ -1,3 +1,5 @@
+$productInfoLayoutGutter: 6%;
+
 .product-info {
 	&__title {
 		spaced(.5);
@@ -24,18 +26,18 @@
 @tablet {
 	.product-info {
 		&__right {
-			row(6%);
+			row($productInfoLayoutGutter);
 		}
 		&__meta,
 		&__product-options {
-			column(spaced, 1, 2, 6%);
+			column(spaced, 1, 2, $productInfoLayoutGutter);
 		}
 	}
 }
 
 @desktop {
 	.product-info {
-		row(6%);
+		row($productInfoLayoutGutter);
 		&__left,
 		&__right {
 			rowReset();
