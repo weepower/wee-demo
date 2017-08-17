@@ -32,7 +32,20 @@ import wButton from '../w-button/index.vue';
 export default {
 	name: 'product-options',
 	components: { productOption, wButton },
+	data() {
+		return {
+			cartMessage: '',
+			product: $store.get('product'),
+			size: '',
+			color: '',
+			quantity: 1
+		}
+	},
+
 	methods: {
+		/**
+		 * Add product to cart and
+		 */
 		addToCart() {
 			$mediator.emit('cart.add', {
 				title: this.product.title,
@@ -43,17 +56,6 @@ export default {
 					alt: this.product.title
 				}
 			});
-
-			showNav();
-		}
-	},
-	data() {
-		return {
-			cartMessage: '',
-			product: $store.get('product'),
-			size: '',
-			color: '',
-			quantity: 1
 		}
 	}
 }
