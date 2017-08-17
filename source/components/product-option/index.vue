@@ -20,7 +20,8 @@ export default {
 	name: 'product-option',
 	components: { dropdown, colorSelector, quantity },
 	props: {
-		defaultValue: {},
+		defaultValue: null,
+		values: null,
 		type: {
 			default: '',
 			type: String
@@ -28,8 +29,7 @@ export default {
 		title: {
 			default: '',
 			type: String
-		},
-		values: {}
+		}
 	},
 	data() {
 		return {

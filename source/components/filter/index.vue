@@ -26,7 +26,7 @@ export default {
 	props: {
 		title: { type: String, default: '' },
 		type: { type: String, default: '' },
-		filterValue: {},
+		filterValue: null,
 		filterData: {
 			type: Array,
 			default() {
