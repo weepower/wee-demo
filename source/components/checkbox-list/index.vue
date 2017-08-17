@@ -18,10 +18,9 @@ import checkbox from '../checkbox/index.vue';
 
 export default {
 	name: 'checkbox-list',
-	components: {
-		checkbox
-	},
+	components: { checkbox },
 	props: {
+		prefix: { type: String },
 		values: {
 			type: Array,
 			default() {
@@ -33,13 +32,7 @@ export default {
 			default() {
 				return [];
 			}
-		},
-		prefix: {
-			type: String
 		}
-	},
-	mounted() {
-		this.selected = this.selection;
 	},
 	data() {
 		return {
@@ -50,6 +43,10 @@ export default {
 		selection(newValue) {
 			this.selected = newValue;
 		}
+	},
+
+	mounted() {
+		this.selected = this.selection;
 	},
 
 	methods: {
