@@ -36,10 +36,12 @@ function getPageUrl(page, totalPages, params) {
 	let path = '/products';
 	let query = queryString.stringify(params);
 
-	if (page !== 1 && page > 0 && page <= totalPages) {
-		if (page > 0) {
-			path += `?page=${page}`;
-		}
+	if (page < 1 || page > totalPages) {
+		return false;
+	}
+
+	if (page > 1 && page <= totalPages) {
+		path += `?page=${page}`;
 	}
 
 	if (query && page > 0) {

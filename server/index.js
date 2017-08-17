@@ -28,9 +28,16 @@ app.get('/', (req, res) => {
 });
 
 // Endpoints
-app.get('/products', (req, res) => {
+app.get('/products', (req, res, next) => {
+	const pageQuery = req.query.page;
 	const index = (parseInt(req.query.page) - 1);
 	const products = db.query(req.query);
+
+	// 404 if page does not exist
+	if (pageQuery && ! products.hasOwnProperty(index)) {
+		return next();
+	}
+
 	const page = products[index] !== undefined ? index : 0;
 	const data = {
 		products: products[page],
