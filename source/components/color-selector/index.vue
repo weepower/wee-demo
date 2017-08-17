@@ -24,11 +24,14 @@ export default {
 		defaultValue: {
 			type: Object,
 			default() {
-				return {}
+				return {};
 			}
 		},
 		selection: {
-			type: [Object, Array]
+			type: Array,
+			default() {
+				return [];
+			}
 		}
 	},
 	data() {
