@@ -7,6 +7,10 @@ const generateCrumbs = require('./breadcrumbs');
 const db = require('./db');
 const app = express();
 const port = 3000;
+const args = new Set();
+process.argv.filter(arg => arg.includes('--')).forEach((arg) => {
+	args.add(arg.replace('--', ''));
+});
 
 // Set static file source
 app.use(express.static(path.resolve(__dirname + '/../public')));
@@ -70,10 +74,12 @@ app.use((req, res) => {
 app.listen(port, () => {
 	console.log(`Wee demo listening on port: ${port}`);
 
-	childProcess.exec(`open -a "Google Chrome" http://localhost:${port}`, (error) => {
-		if (error) {
-			console.error(`exec error: ${error}`);
-			return;
-		}
-	});
+	if (args.has('launch')) {
+		childProcess.exec(`open -a "Google Chrome" http://localhost:${port}`, (error) => {
+			if (error) {
+				console.error(`exec error: ${error}`);
+				return;
+			}
+		});
+	}
 });
