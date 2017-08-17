@@ -3,17 +3,19 @@ import $ from 'wee-dom';
 import $events from 'wee-events';
 import classes from '../../scripts/classes';
 
-function bindEvents() {
-	const wrap = '.js-gallery-thumb-wrap';
+const localClasses = {
+	wrap: '.js-gallery-thumb-wrap'
+};
 
-	$events.on(wrap, 'click.gallery', (e, el) => {
+function bindEvents() {
+	$events.on(localClasses.wrap, 'click.gallery', (e, el) => {
 		const $thumb = $(el);
 
-		$(wrap).removeClass(classes.active);
+		$(localClasses.wrap).removeClass(localClasses.active);
 
 		$('.js-gallery-main-image').attr('src', $thumb.find('.js-gallery-thumb').attr('src'));
 
-		$thumb.addClass(classes.active);
+		$thumb.addClass(localClasses.active);
 	});
 }
 
