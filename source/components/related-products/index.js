@@ -13,6 +13,7 @@ export default new RouteHandler({
 		// Instantiate the component while setting some default
 		// properties that will be merged with the component properties
 		related = new RelatedProducts({
+			name: 'related-products',
 			data() {
 				return {
 					title: 'Related Products',
