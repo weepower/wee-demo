@@ -1,4 +1,6 @@
 .image-gallery {
+	$gutter: 4%;
+
 	&__main {
 		width: 100%;
 		&-wrap {
@@ -8,13 +10,14 @@
 		}
 	}
 	&__thumbs {
-		inlineRow(4%);
+		inlineRow($gutter);
 		spaced(2);
 	}
 	&__thumb {
 		spaced(1);
 		&-wrap {
-			inlineColumn(spaced, 1, 3, 4%);
+			inlineColumn(spaced, 1, 3, $gutter);
+			spaced($gutter);
 			transition(border-color);
 			background-color: $colors.offWhite;
 			border: 1px solid transparent;
@@ -33,14 +36,16 @@
 
 @tablet {
 	.image-gallery {
-		row(2%);
+		$gutter: 2%;
+
+		row($gutter);
 		&__main {
 			&-wrap {
-				column(spaced, 10, 12, 2%);
+				column(spaced, 10, 12, $gutter);
 			}
 		}
 		&__thumbs {
-			column(spaced, 2, 12, 2%);
+			column(spaced, 2, 12, $gutter);
 		}
 		&__thumb {
 			&-wrap {
@@ -54,17 +59,19 @@
 
 @desktop {
 	.image-gallery {
+		$gutter: 6%;
+
 		&__main-wrap {
 			columnReset();
 			rowReset();
 		}
 		&__thumbs {
 			columnReset();
-			row(6%);
+			row($gutter);
 		}
 		&__thumb {
 			&-wrap {
-				column(spaced, 1, 4, 6%);
+				column(spaced, 1, 4, $gutter);
 			}
 		}
 	}

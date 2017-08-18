@@ -82,7 +82,11 @@ module.exports = {
 	find(slug) {
 		const results = products.find((product) => product.slug === slug);
 
-		return [results]
+		if (results) {
+			return [results]
+		}
+
+		return false;
 	},
 
 	getRelated(ids) {
