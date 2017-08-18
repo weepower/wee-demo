@@ -1,0 +1,12 @@
+{% if pjax %}
+	{% extends 'layouts/pjax.njk' %}
+{% else %}
+	{% extends 'layouts/master.njk' %}
+{% endif %}
+
+{% block content %}
+		<div class="not-found">
+			<h1 class="not-found__title">That's gonna be a 404 for ya.</h1>
+			<a href="/products" class="not-found__link">Back to the swag.</a>
+		</div>
+{% endblock %}
