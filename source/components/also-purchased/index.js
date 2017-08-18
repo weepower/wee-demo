@@ -3,14 +3,15 @@ import Vue from 'vue';
 import productRoll from '../product-roll/index.vue';
 
 // Create component constructor
-export const AlsoBought = Vue.extend(productRoll);
+export const AlsoPurchased = Vue.extend(productRoll);
 
-let alsoBought;
+let alsoPurchased;
 
 // Register and mount component
 export default new RouteHandler({
 	init() {
-		alsoBought = new AlsoBought({
+		alsoPurchased = new AlsoPurchased({
+			name: 'also-purchased',
 			data() {
 				return {
 					title: 'Customers Also Purchased',
@@ -19,9 +20,9 @@ export default new RouteHandler({
 			}
 		});
 
-		alsoBought.$mount('.js-also-bought');
+		alsoPurchased.$mount('.js-also-purchased');
 	},
 	unload() {
-		alsoBought.$destroy();
+		alsoPurchased.$destroy();
 	}
 });

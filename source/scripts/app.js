@@ -8,7 +8,7 @@ import productIndex from '../components/product-index';
 import imageGallery from '../components/image-gallery';
 import productOptions from '../components/product-options';
 import relatedProducts from '../components/related-products';
-import alsoBought from '../components/also-bought';
+import alsoPurchased from '../components/also-purchased';
 
 $router({
 	transition: {
@@ -28,6 +28,6 @@ $router({
 	},
 	{
 		path: '/products/:slug',
-		handler: [header, cart, imageGallery, productOptions, relatedProducts, alsoBought]
+		handler: [header, cart, imageGallery, productOptions, relatedProducts, alsoPurchased]
 	}
 ]).run();
