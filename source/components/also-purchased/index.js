@@ -10,6 +10,10 @@ let alsoPurchased;
 // Register and mount component
 export default new RouteHandler({
 	init() {
+		// This showcases our ability to pass in methods and data to our component.
+		// Any data passed into the component constructor will be merged with the
+		// components data, allowing us to initialize it with data that we can fetch
+		// from an API, or from our router.
 		alsoPurchased = new AlsoPurchased({
 			name: 'also-purchased',
 			data() {
