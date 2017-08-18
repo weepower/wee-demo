@@ -1,5 +1,5 @@
 <template>
-	<select class="select dropdown" v-model="selected" @change="$emit('input', selected)">
+	<select class="select w-select" v-model="selected" @change="$emit('input', selected)">
 		<option
 			v-for="value in values"
 			:value="value.slug"
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-	name: 'dropdown',
+	name: 'w-select',
 	props: {
 		values: { type: Array }
 	},

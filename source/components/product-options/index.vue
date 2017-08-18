@@ -2,7 +2,7 @@
 	<div class="product-options">
 		<product-option
 			title="Size"
-			type="dropdown"
+			type="wSelect"
 			:values="product.sizes"
 			v-model="size"
 		/>

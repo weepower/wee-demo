@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import dropdown from '../dropdown/index.vue';
+import wSelect from '../w-select/index.vue';
 import colorSelector from '../color-selector/index.vue';
 import quantity from '../quantity/index.vue';
 
 export default {
 	name: 'product-option',
-	components: { dropdown, colorSelector, quantity },
+	components: { wSelect, colorSelector, quantity },
 	props: {
 		defaultValue: null,
 		values: null,
