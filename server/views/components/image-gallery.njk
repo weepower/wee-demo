@@ -1,11 +1,11 @@
 <div class="image-gallery">
 	<div class="image-gallery__main-wrap">
-		<img class="image-gallery__main js-gallery-main-image" src="{{ product.images[0] }}">
+		<img class="image-gallery__main js-gallery-main-image" src="{{ product.images[0] }}" alt="{{ product.title }}">
 	</div>
 	<div class="image-gallery__thumbs">
 		{% for image in product.images %}
 		<div class="image-gallery__thumb-wrap js-gallery-thumb-wrap{% if loop.index == 1 %} -is-active{% endif %}">
-			<img class="image-gallery__thumb js-gallery-thumb" src="{{ image }}">
+			<img class="image-gallery__thumb js-gallery-thumb" src="{{ image }}" alt="{{ product.title }}">
 		</div>
 		{% endfor %}
 	</div>

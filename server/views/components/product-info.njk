@@ -3,15 +3,10 @@
 		{% include 'components/image-gallery.njk' %}
 	</div>
 	<div class="product-info__right">
-		<div class="product-info__meta">
-			<h1 class="product-info__title">{{ product.title }}</h1>
-			<a href="/products?category[]={{ product.category.slug }}">
-				<h4 class="product-info__subtitle">{{ product.category.title }}</h4>
-			</a>
-			<div class="product-info__price">${{ product.price }}</div>
-			<p>{{ product.description }}</p>
+		<div class="product-info__right-section">
+			{% include 'components/product-description.njk' %}
 		</div>
-		<div class="product-info__product-options">
+		<div class="product-info__right-section">
 			<div class="js-product-options"></div>
 		</div>
 	</div>

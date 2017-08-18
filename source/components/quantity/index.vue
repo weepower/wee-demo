@@ -1,13 +1,13 @@
 <template>
-	<dropdown :values="options" v-model="selected" @input="$emit('input', selected)"/>
+	<w-select :values="options" v-model="selected" @input="$emit('input', selected)"/>
 </template>
 
 <script>
-import dropdown from '../dropdown/index.vue';
+import wSelect from '../w-select/index.vue';
 
 export default {
 	name: 'quantity',
-	components: { dropdown },
+	components: { wSelect },
 	props: {
 		values: null
 	},

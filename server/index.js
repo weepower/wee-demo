@@ -61,7 +61,7 @@ app.get('/products/:slug', (req, res, next) => {
 
 		res.render('products/detail.njk', { product, breadcrumbs });
 	} else {
-		next();
+		res.status(404).render('404.njk');
 	}
 });
 

@@ -1,7 +1,7 @@
 <template lang="html">
 	<div class="product-roll">
 		<h3 class="product-roll__title" v-text="title"></h3>
-		<div class="product-roll__inner">
+		<div class="product-roll__items">
 			<a :href="`/products/${product.slug}`" class="product-roll__item" v-for="product in products">
 				<img class="product-roll__image" :src="product.images[0]" :alt="product.title">
 				<div class="product-roll__price">${{ product.price }}</div>
