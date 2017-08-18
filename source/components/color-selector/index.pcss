@@ -5,14 +5,26 @@
 		inlineBlock();
 		scale(1);
 		spaced(1);
-		transition(transform);
 		cursor: pointer;
 		margin-right: 1.5rem;
 		&.-light {
-			border(width: 2px);
+			border(width: 1px);
 		}
 		&.-is-active {
-			scale(1.2);
+			position: relative;
+			&::after {
+				absolute(50%, 50%);
+				icon($icon.checkmark, 1.2);
+				color: $colors.white;
+				left: 0;
+				text-align: center;
+				width: 3rem;
+			}
+			&.-light {
+				&::after {
+					color: $colors.darkestGray;
+				}
+			}
 		}
 	}
 }
