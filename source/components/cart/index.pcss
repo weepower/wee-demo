@@ -1,7 +1,12 @@
 .cart {
+	square(3);
 	cursor: pointer;
 	position: relative;
-	width: 3rem;
+	&::after {
+		icon($icon.cart, 3);
+		line-height: 1;
+		square(3);
+	}
 	&__count {
 		absolute(top: -.8rem, left: 1.8rem);
 		rounded(50%);
