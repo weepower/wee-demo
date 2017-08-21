@@ -15,6 +15,17 @@ $router({
 		target: '.content',
 		class: '-is-loading',
 		timeout: 200
+	},
+	scrollBehavior(to, from, savedPosition) {
+		if (savedPosition) {
+			return savedPosition;
+		}
+
+		if (to.path === '/products') {
+			return false;
+		}
+
+		return { x: 0, y: 0 };
 	}
 }).pjax({
 	partials: ['.content']

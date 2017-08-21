@@ -19,6 +19,7 @@ heading.weight = 500;
 
 icon.checkmark = 'ea10';
 icon.cart = 'e93a';
+icon.close = 'ea0f';
 
 icon.family = 'icomoon';
 

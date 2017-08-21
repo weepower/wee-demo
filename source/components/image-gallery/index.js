@@ -9,13 +9,17 @@ const localClasses = {
 
 function bindEvents() {
 	$events.on(localClasses.wrap, 'click.gallery', (e, el) => {
-		const $thumb = $(el);
+		const $thumb = $(el),
+			$thumbImage = $thumb.find('.js-gallery-thumb');
 
-		$(localClasses.wrap).removeClass(localClasses.active);
+		$(localClasses.wrap).removeClass(classes.active);
 
-		$('.js-gallery-main-image').attr('src', $thumb.find('.js-gallery-thumb').attr('src'));
+		$('.js-gallery-main-image').attr({
+			src: $thumbImage.attr('src'),
+			alt: $thumbImage.attr('alt')
+		});
 
-		$thumb.addClass(localClasses.active);
+		$thumb.addClass(classes.active);
 	});
 }
 
