@@ -18,7 +18,8 @@ export default {
 		}
 	},
 	created() {
-		// Set the options for the dropdown
+		// This might be considered a "wrapper" component.  We can use our generic w-select component,
+		// but we need to massage the data into the correct format.
 		for (let i = 0; i < this.values; i += 1) {
 			let value = i + 1;
 

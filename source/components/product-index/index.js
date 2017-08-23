@@ -1,13 +1,22 @@
 import { RouteHandler } from 'wee-routes';
 import $events from 'wee-events';
 import $ from 'wee-dom';
+
+// We store any commonly referenced class names in it's own file and import it
 import classes from '../../scripts/classes';
+
+// Any one off class references we can store in a different variable.
+const localClasses = {
+	sidebar: '.js-sidebar',
+	content: '.js-content',
+	toggle: '.js-sidebar-toggle'
+}
 
 /**
  * Bind all product index events
  */
 function bindEvents() {
-	$events.on('.js-sidebar-toggle', 'click.productIndex', toggleSidebar);
+	$events.on(localClasses.toggle, 'click.productIndex', toggleSidebar);
 }
 
 /**
@@ -22,8 +31,8 @@ function rebindEvents() {
  * Open/close sidebar menu on mobile/tablet layouts
  */
 function toggleSidebar() {
-	$('.js-sidebar').toggleClass(classes.active);
-	$('.js-content').toggleClass(classes.active);
+	$(localClasses.sidebar).toggleClass(classes.active);
+	$(localClasses.content).toggleClass(classes.active);
 }
 
 export default new RouteHandler({

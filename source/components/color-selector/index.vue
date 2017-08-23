@@ -50,7 +50,8 @@ export default {
 	},
 
 	mounted() {
-		// Set default selection to first color
+		// Since Vue doesn't allow us to manipulate props, we must set
+		// a data property to the value of the prop so that we can manipulate it.
 		if (this.defaultValue.title) {
 			this.selected.push(this.defaultValue.title);
 		}

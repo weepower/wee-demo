@@ -24,9 +24,11 @@ export default new RouteHandler({
 			}
 		});
 
+		// Whenever the page is updated, remount the Vue component.
 		related.$mount('.js-related-products');
 	},
 	unload() {
+		// Destroy the component on unload
 		related.$destroy();
 	}
 });

@@ -17,12 +17,16 @@ import $store from 'wee-store';
 export default {
 	name: 'product-roll',
 	mounted() {
+		// This is an example of how we can fetch data from the server from
+		// within our component.  It's made easy with the new fetch module
+		// and made cleaner by arrow functions.
 		$fetch.get(this.url, {
 			params: { ids: this.related }
 		}).then(response => this.products = response.data[0]);
 	},
 	data() {
 		return {
+			// Here we are setting the related products from the global data store.
 			related: $store.get('product').related,
 			products: []
 		}

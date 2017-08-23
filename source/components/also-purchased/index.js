@@ -24,6 +24,7 @@ export default new RouteHandler({
 			}
 		});
 
+		// Mount the component to a targeted selection
 		alsoPurchased.$mount('.js-also-purchased');
 	},
 	unload() {

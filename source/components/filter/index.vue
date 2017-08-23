@@ -2,6 +2,8 @@
 <div class="filter">
 	<h4 class="filter__title">{{ title }}</h4>
 	<div class="filter__type">
+		<!-- Here we can use a "dynamic component" by supplying the <component></component> tag
+			and adding the "is" parameter to specify the type -->
 		<component
 			:is="type"
 			:prefix="prefix"
@@ -46,6 +48,8 @@ export default {
 		};
 	},
 	computed: {
+		// Here we are utilizing Vue's computed properties to generate a filter
+		// name based on the title
 		prefix() {
 			return this.title.toLowerCase() + '-filter';
 		}

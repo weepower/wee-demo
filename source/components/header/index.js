@@ -8,6 +8,9 @@ const $header = $('.js-header');
 const $content = $('.js-content');
 const $logoEE = $('.js-logo-ee');
 const headerHeight = $header.height(true);
+
+// Here, we create an object to store various state variables that we'll need
+// to keep track of
 let state = {
 	scrolled: false,
 	shown: false,
@@ -61,5 +64,7 @@ export default new RouteHandler({
 	init() {
 		bindEvents();
 	},
+	// On unload, the router will attempt to remove any events or mappings that use
+	// this namespace
 	unload: 'header'
 });

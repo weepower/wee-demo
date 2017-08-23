@@ -1,6 +1,8 @@
 <template>
 	<div class="product-option">
 		<h5 class="product-option__title">{{ title }}</h5>
+		<!-- Here we can use a "dynamic component" by supplying the <component></component> tag
+			and adding the "is" parameter to specify the type -->
 		<component
 			:is="type"
 			:default-value="defaultValue"

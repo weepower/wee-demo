@@ -46,6 +46,8 @@ export default {
 	},
 
 	mounted() {
+		// Since Vue doesn't allow us to manipulate props, we must set
+		// a data property to the value of the prop so that we can manipulate it.
 		this.selected = this.selection;
 	},
 

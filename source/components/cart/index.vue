@@ -43,6 +43,8 @@ export default {
 			if (value === false) {
 				this.disableBodyEvent();
 			} else {
+				// Here, we need to define some additional event bindings that
+				// are outside of the confines of the module.  This is okay.
 				$events.on({
 					body: {
 						click: this.hideList
@@ -64,6 +66,7 @@ export default {
 			this.items = data;
 		}
 
+		// Here we define our mediator events
 		$mediator.on('cart.add', this.update);
 		$mediator.on('navigation', this.hideList);
 	},
