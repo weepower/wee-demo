@@ -1,11 +1,8 @@
 <template lang="html">
-	<div class="product-roll">
-		<h3 class="product-roll__title" v-text="title"></h3>
-		<div class="product-roll__items">
-			<a :href="`/products/${product.slug}`" class="product-roll__item" v-for="product in products">
-				<img class="product-roll__image" :src="product.images[0]" :alt="product.title">
-				<div class="product-roll__price">${{ product.price }}</div>
-			</a>
+	<div class="l-product-roll">
+		<h3 class="l-product-roll__title" v-text="title"></h3>
+		<div class="l-product-roll__items">
+			<product-card-mini v-for="product in products" classes="l-product-roll__item" :key="product.id" :product="product"/>
 		</div>
 	</div>
 </template>
@@ -13,9 +10,11 @@
 <script>
 import $fetch from 'wee-fetch';
 import $store from 'wee-store';
+import productCardMini from '../product-card-mini/index.vue';
 
 export default {
 	name: 'product-roll',
+	components: { productCardMini },
 	mounted() {
 		// This is an example of how we can fetch data from the server from
 		// within our component.  It's made easy with the new fetch module

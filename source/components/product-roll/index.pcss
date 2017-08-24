@@ -1,15 +1,10 @@
-.product-roll {
+.l-product-roll {
 	spaced(4);
 	&__inner {
 		inlineRow(6%);
 	}
-	&__image {
-		spaced(2);
-		margin(horizontal, auto);
-		max-height: 5.7rem;
-	}
-	&__price {
-		text-align: center;
+	&__items {
+		inlineRow(6%);
 	}
 	&__item {
 		inlineColumn(spaced, 1, 2, 6%);
@@ -25,16 +20,8 @@
 	}
 }
 
-@tablet {
-	.product-roll {
-		&__image {
-			max-height: 15rem;
-		}
-	}
-}
-
 @desktop {
-	.product-roll {
+	.l-product-roll {
 		&__item {
 			inlineColumn(spaced, 1, 4, 6%);
 		}
