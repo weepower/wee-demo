@@ -1,6 +1,6 @@
 {% set image = product.images[0] %}
 
-<a href="/products/{{ product.slug }}"class="product-card products__item">
+<a href="/products/{{ product.slug }}"class="product-card l-products__item">
 	{% if product.tags|length %}
 		{% set tag =  product.tags[0] %}
 		<div class="product-card__flag{% if tag.slug == 'new' %} -alt{% endif %}">{{ tag.title }}</div>

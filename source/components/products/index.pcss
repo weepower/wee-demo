@@ -1,11 +1,11 @@
 $productLayoutGutter: 3%;
 
-.products {
+.l-products {
 	spaced(4);
 }
 
 @tablet {
-	.products {
+	.l-products {
 		inlineRow($productLayoutGutter);
 		spaced(4);
 		&__item {
@@ -15,7 +15,7 @@ $productLayoutGutter: 3%;
 }
 
 @desktop {
-	.products {
+	.l-products {
 		&__item {
 			inlineColumn(spaced, 1, 3, $productLayoutGutter);
 		}

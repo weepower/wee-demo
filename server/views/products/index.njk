@@ -5,18 +5,18 @@
 {% endif %}
 
 {% block content %}
-	<div class="product-index">
-		<div class="product-index__sidebar js-sidebar">
-			<div class="product-index__sidebar-toggle js-sidebar-toggle"></div>
+	<div class="l-product-index">
+		<div class="l-product-index__sidebar js-sidebar">
+			<div class="l-product-index__sidebar-toggle js-sidebar-toggle"></div>
 			<div class="js-filters"></div>
 		</div>
-		<main role="main" class="product-index__content js-content">
-			<div class="product-index__actions">
+		<main role="main" class="l-product-index__content js-content">
+			<div class="l-product-index__actions">
 				{% include 'components/breadcrumbs.njk' %}
 				<button type="button" class="button colored-button -small js-sidebar-toggle sidebar__toggle-button">Filter</button>
 			</div>
 			{% if products.length %}
-				<div class="products">
+				<div class="l-products">
 					{% for product in products %}
 						{% include 'components/product-card.njk' %}
 					{% endfor %}
