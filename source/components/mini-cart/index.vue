@@ -1,19 +1,19 @@
 <template>
-<div class="cart" @click.stop="toggleList">
-	<span class="cart__count" v-if="totalItems > 0">{{ totalItems }}</span>
-	<ul class="cart__list js-cart-list" v-show="shown">
-		<li class="cart__item" v-for="(item, key) in items" v-if="totalItems > 0">
-			<img :src="item.image.url" :alt="item.image.alt" class="cart__item-image">
-			<div class="cart__item-meta">
-				<a :href="getProductUrl(item.slug)" class="cart__item-name">{{ item.title }}</a>
-				<div class="cart__item-qty">Qty: {{ item.quantity }}</div>
-				<a href="#" class="cart__item-remove" @click.prevent.stop="removeItem(key)">Remove</a>
+<div class="mini-cart" @click.stop="toggleList">
+	<span class="mini-cart__count" v-if="totalItems > 0">{{ totalItems }}</span>
+	<ul class="mini-cart__list js-cart-list" v-show="shown">
+		<li class="mini-cart__item" v-for="(item, key) in items" v-if="totalItems > 0">
+			<img :src="item.image.url" :alt="item.image.alt" class="mini-cart__item-image">
+			<div class="mini-cart__item-meta">
+				<a :href="getProductUrl(item.slug)" class="mini-cart__item-name">{{ item.title }}</a>
+				<div class="mini-cart__item-qty">Qty: {{ item.quantity }}</div>
+				<a href="#" class="mini-cart__item-remove" @click.prevent.stop="removeItem(key)">Remove</a>
 			</div>
 		</li>
 		<li v-show="totalItems > 0">
 			<a href="/cart" class="button colored-button cart__button" v-if="totalItems">Cart</a>
 		</li>
-		<li class="cart__empty" v-if="! totalItems">
+		<li class="mini-cart__empty" v-if="! totalItems">
 			The cart is empty
 		</li>
 	</ul>
