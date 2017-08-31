@@ -1,0 +1,11 @@
+{% if pjax %}
+	{% extends 'layouts/pjax.njk' %}
+{% else %}
+	{% extends 'layouts/master.njk' %}
+{% endif %}
+
+{% block content %}
+	<div class="l-cart">
+		<div class="js-cart"></div>
+	</div>
+{% endblock %}
