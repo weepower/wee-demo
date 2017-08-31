@@ -22,7 +22,7 @@ export default new RouteHandler({
 		cart = new Cart();
 
 		// Mount the component to a targeted selection
-		cart.$mount('.js-cart');
+		cart.$mount('.js-mini-cart');
 	},
 	unload() {
 		cart.$destroy();

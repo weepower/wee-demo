@@ -2,7 +2,7 @@ import $router from 'wee-routes';
 import $mediator from 'wee-mediator';
 import './bootstrap';
 import header from '../components/header';
-import cart from '../components/cart';
+import miniCart from '../components/mini-cart';
 import filters from '../components/filters';
 import productIndex from '../components/product-index';
 import imageGallery from '../components/image-gallery';
@@ -35,10 +35,10 @@ $router({
 }).map([
 	{
 		path: '/products',
-		handler: [header, cart, filters, productIndex]
+		handler: [header, miniCart, filters, productIndex]
 	},
 	{
 		path: '/products/:slug',
-		handler: [header, cart, imageGallery, productOptions, relatedProducts, alsoPurchased]
+		handler: [header, miniCart, imageGallery, productOptions, relatedProducts, alsoPurchased]
 	}
 ]).run();
