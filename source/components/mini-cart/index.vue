@@ -10,6 +10,9 @@
 				<a href="#" class="cart__item-remove" @click.prevent.stop="removeItem(key)">Remove</a>
 			</div>
 		</li>
+		<li v-show="totalItems > 0">
+			<a href="/cart" class="button colored-button cart__button" v-if="totalItems">Cart</a>
+		</li>
 		<li class="cart__empty" v-if="! totalItems">
 			The cart is empty
 		</li>
