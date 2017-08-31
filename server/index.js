@@ -65,6 +65,10 @@ app.get('/products/:slug', (req, res, next) => {
 	}
 });
 
+app.get('/cart', (req, res) => {
+	res.render('cart/index.njk');
+});
+
 app.get('/ajax/products/related', (req, res) => {
 	res.send(db.getRelated(req.query.ids));
 });
