@@ -2,7 +2,7 @@ const postcss = require('postcss');
 const glob = require('glob');
 const fs = require('fs-extra');
 const chalk = require('chalk');
-const syntax = require('postcss-wee-syntax');
+const sass = require('node-sass');
 const paths = require('../paths');
 const log = require('../utils').log;
 
@@ -11,33 +11,19 @@ const config = fs.readJsonSync(paths.project + '/wee.json');
 const breakpoints = config.style.breakpoints;
 const features = config.style.features;
 const compile = config.style.compile;
-const variables = require(paths.styles + '/variables.js')();
 const plugins = [
-	require('postcss-variables')({
-		globals: variables
-	}),
-	require('postcss-js-mixins')({
-		mixins: Object.assign(require(paths.weeCore + '/styles/mixins.js')(variables), require(paths.styles + '/mixins.js')(variables))
-	}),
-	require('postcss-nested-selectors')(),
-	require('postcss-nested')({
-		bubble: Object.keys(breakpoints)
-	}),
 	require('postcss-variable-media')({
 		breakpoints: calcBreakpoints(breakpoints, config.style.breakpointOffset)
 	}),
-	require('autoprefixer')({
-		browsers: [
-			'last 2 versions',
-			'ie > 9'
-		]
-	}),
+	require('autoprefixer')(),
 	require('cssnano')({
 		safe: true
 	})
 ];
 let ignore = [];
-let result = '';
+
+// Main output file
+let data;
 
 /**
  * Calculate breakpoints with offset included
@@ -91,10 +77,13 @@ function getCSS(filePath) {
  * @param {string} destination
  */
 function processCSS(css, destination) {
+	let result = sass.renderSync({
+		data: css,
+		outputStyle: 'compressed'
+	});
+
 	return postcss(plugins)
-		.process(css, {
-			syntax: syntax
-		})
+		.process(result.css.toString())
 		.then(result => {
 			return new Promise((resolve, reject) => {
 				fs.writeFile(destination, result.css, err => {
@@ -143,44 +132,46 @@ for (let i = 0; i < files.length; i++) {
 	});
 }
 
-// Main output file
-result = '';
+data = '';
 
 // Add reset and base styling
-result += fs.readFileSync(paths.weeCore + '/styles/reset.pcss', 'utf-8');
-result += fs.readFileSync(__dirname + '/../temp/responsive.pcss', 'utf-8');
+data += fs.readFileSync(paths.weeCore + '/styles/variables.scss', 'utf-8');
+data += fs.readFileSync(paths.weeCore + '/styles/mixins.scss', 'utf-8');
+data += fs.readFileSync(paths.weeCore + '/styles/reset.scss', 'utf-8');
+data += fs.readFileSync(__dirname + '/../temp/responsive.scss', 'utf-8');
 
 // Add features
 if (features.buttons) {
-	result += fs.readFileSync(paths.weeCore + '/styles/components/buttons.pcss', 'utf-8');
+	data += fs.readFileSync(paths.weeCore + '/styles/components/buttons.scss', 'utf-8') + '\n';
 }
 
 if (features.code) {
-	result += fs.readFileSync(paths.weeCore + '/styles/components/code.pcss', 'utf-8');
+	data += fs.readFileSync(paths.weeCore + '/styles/components/code.scss', 'utf-8') + '\n';
 }
 
 if (features.forms) {
-	result += fs.readFileSync(paths.weeCore + '/styles/components/forms.pcss', 'utf-8');
+	data += fs.readFileSync(paths.weeCore + '/styles/components/forms.scss', 'utf-8') + '\n';
 }
 
 if (features.tables) {
-	result += fs.readFileSync(paths.weeCore + '/styles/components/tables.pcss', 'utf-8');
+	data += fs.readFileSync(paths.weeCore + '/styles/components/tables.scss', 'utf-8') + '\n';
 }
 
 if (features.print) {
 	// Add print files
-	result += `@media print {
-		${fs.readFileSync(paths.weeCore + '/styles/print.pcss')}
-		${getCSS('print.pcss')}
-	}`;
+	data += `@media print {
+		${fs.readFileSync(paths.weeCore + '/styles/print.scss')}
+		${getCSS('print.scss')}
+	}\n` ;
 }
 
 // Add class helpers
-result += fs.readFileSync(paths.weeCore + '/styles/components/helpers.pcss', 'utf-8');
+data += fs.readFileSync(paths.weeCore + '/styles/components/helpers.scss', 'utf-8') + '\n';
 
 // Add breakpoint files
 for (let breakpoint in breakpoints) {
-	let file = `${paths.styles}/breakpoints/${convertCamelToDash(breakpoint)}.pcss`;
+	let name = convertCamelToDash(breakpoint),
+		file = `${paths.styles}/breakpoints/${name}.scss`;
 
 	// Create file if not already generated
 	fs.ensureFileSync(file);
@@ -188,32 +179,35 @@ for (let breakpoint in breakpoints) {
 	ignore.push(file);
 
 	if (breakpoints[breakpoint]) {
-		result += `@${breakpoint} { ${fs.readFileSync(file, 'utf-8')} }`;
+		data += `@${breakpoint} { ${fs.readFileSync(file, 'utf-8')} }\n`;
 	} else {
-		log.error('Unregistered breakpoint: ' + name);
+		log.error(`Unregistered breakpoint: ${name}`);
 		log.message('Check breakpoint files against registered breakpoints in wee.json');
 	}
 }
 
+// Add variables files
+data += fs.readFileSync(paths.styles + '/variables.scss', 'utf-8');
+
 // Add component files
-glob.sync(paths.components + '/**/*.{pcss,css}').forEach(file => {
-	result += fs.readFileSync(file, 'utf-8');
+glob.sync(paths.components + '/**/*.{scss,css}').forEach(file => {
+	data += fs.readFileSync(file, 'utf-8') + '\n';
 });
 
 // Add all build files
 config.style.build.forEach(pattern => {
-	result += getCSS(pattern);
+	data += getCSS(pattern);
 });
 
 // Concatenate all other files
-glob.sync(paths.styles + '**/*.{pcss,css}', {
-	ignore: ignore
+glob.sync(paths.styles + '**/*.{scss,css}', {
+	ignore
 }).forEach(file => {
-	result += fs.readFileSync(file, 'utf-8');
+	data += fs.readFileSync(file, 'utf-8') + '\n';
 });
 
 // Process main style file
-processCSS(result, paths.output.styles + '/style.min.css').then(() => {
+processCSS(data, paths.output.styles + '/style.min.css').then(() => {
 	log.message('Compiled: style.min.css', 'red');
 
 	// Add newline for separation from proceeding webpack printout
