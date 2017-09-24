@@ -1,0 +1,20 @@
+.product-description {
+	margin-bottom: 4rem;
+	&__title {
+		margin-bottom: .5rem;
+	}
+	&__left {
+		margin-bottom: 4rem;
+	}
+	&__price {
+		margin-bottom: 2rem;
+		font-size: 2rem;
+		font-weight: $boldFontWeight;
+	}
+	&__subtitle {
+		margin-bottom: 2rem;
+		font-size: 1.7rem;
+		font-style: italic;
+		font-weight: $normalFontWeight;
+	}
+}

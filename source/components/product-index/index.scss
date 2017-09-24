@@ -4,21 +4,20 @@
 		margin-top: 11.3rem;
 	}
 	&__actions {
-		flexContainer();
-		align-items: flex-start;
-		justify-content: space-between;
+		@include flexContainer($align: flex-start, $justify: space-between);
 	}
 	&__sidebar {
-		absolute(0, false, 0, -30);
-		transition(left);
+		@include absolute(0, false, 0, -30rem);
+		
+		transition: left .2s ease-in-out;
 		width: 30rem;
 		&-toggle {
-			absolute(1, 0);
+			@include absolute(1rem, 0);
 			cursor: pointer;
 			font-size: 2rem;
 			z-index: 1;
 			&::after {
-				icon($icon.close, 1.1);
+				@include icon($iconClose, 1.1rem);
 			}
 		}
 		&.-is-active {
@@ -26,10 +25,11 @@
 		}
 	}
 	&__content {
-		padding(horizontal, 3.5rem);
-		transition(margin-left);
 		margin-left: 0rem;
 		min-width: 100%;
+		padding-left: 3.5rem;
+		padding-right: 3.5rem;
+		transition: margin-left .2s ease-in-out;
 		&.-is-active {
 			margin-left: 30rem;
 		}
@@ -41,7 +41,7 @@
 		&__sidebar {
 			left: 0;
 			&-toggle {
-				hide();
+				display: none;
 			}
 		}
 		&__content {
@@ -51,7 +51,7 @@
 	}
 	.sidebar {
 		&__toggle-button {
-			hide();
+			display: none;
 		}
 	}
 }

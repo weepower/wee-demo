@@ -1,5 +1,5 @@
 .breadcrumbs {
-	unstyled();
+	list-style: none;
 	&__crumb {
 		display: inline-block;
 		font-size: 1.3rem;
@@ -7,7 +7,7 @@
 		position: relative;
 		&:not(:last-child) {
 			&::after {
-				absolute(0, -1);
+				@include absolute(0, -1rem);
 				display: block;
 				content: '/';
 			}

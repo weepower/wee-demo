@@ -1,0 +1,31 @@
+.color-selector {
+	margin-bottom: 2rem;
+	&__color {
+		@include circle(3rem);
+		
+		display: inline-block;
+		transform: scale(1);
+		cursor: pointer;
+		margin-right: 1.5rem;
+		margin-bottom: 1rem;
+		&.-light {
+			border:1px solid $darkGray;
+		}
+		&.-is-active {
+			position: relative;
+			&::after {
+				@include absolute(50%, 50%);
+				@include icon($iconCheckmark, 1.2rem);
+				color: $white;
+				left: 0;
+				text-align: center;
+				width: 3rem;
+			}
+			&.-light {
+				&::after {
+					color: $darkestGray;
+				}
+			}
+		}
+	}
+}

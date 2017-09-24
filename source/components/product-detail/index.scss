@@ -1,0 +1,12 @@
+.l-product-detail {
+	@include centeredBlock(90rem);
+	margin-left: 3.5rem;
+	margin-right: 3.5rem;
+}
+
+@desktop {
+	.l-product-detail {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

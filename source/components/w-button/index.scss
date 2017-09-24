@@ -1,0 +1,24 @@
+.w-button {
+	display: inline-block;
+	position: relative;
+	&__popup {
+		@include absolute(140%);
+		
+		color: $white;
+		background-color: $black;
+		left: 50%;
+		text-align: center;
+		padding: 1.3rem;
+		transform: translateX(-50%);
+		width: 100%;
+		&::before {
+			@include absolute(-.72rem, 50%);
+			@include size(1.5);
+			
+			display: block;
+			content: '';
+			background-color: $black;
+			transform: translateX(50%) rotate(45deg);
+		}
+	}
+}

@@ -1,7 +1,8 @@
 .product-card-mini {
-	margin(horizontal, auto);
+	margin-left: auto;
+	margin-right: auto;
 	&__image {
-		spaced(2);
+		margin-bottom: 2rem;
 	}
 	&__price {
 		text-align: center;

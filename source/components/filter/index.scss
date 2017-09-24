@@ -1,0 +1,9 @@
+.filter {
+	border-top: solid 1px $lighterGray;
+	padding-top: 1.8rem;
+	padding-bottom: 2.2rem;
+	&__title {
+		font-size: 1.6rem;
+		margin-bottom: .8rem;
+	}
+}

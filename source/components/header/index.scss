@@ -1,9 +1,9 @@
 .l-header {
-	flexContainer(justify: space-between);
-	transition(top);
-	background-color: $colors.white;
+	@include flexContainer($justify: space-between);
+	background-color: $white;
 	padding: 4rem 2.2rem;
 	position: relative;
+	transition: top .2s ease-in-out;
 	z-index: 100;
 	&.-is-fixed {
 		position: fixed;
@@ -18,6 +18,7 @@
 
 @desktop {
 	.l-header {
-		padding(horizontal, 3.5);
+		padding-left: 3.5rem;
+		padding-right: 3.5rem;
 	}
 }

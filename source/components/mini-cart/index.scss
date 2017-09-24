@@ -1,21 +1,24 @@
 .mini-cart {
-	square(3);
+	@include size(3rem);
+	
 	cursor: pointer;
 	position: relative;
 	&::after {
-		icon($icon.cart, 3);
+		@include icon($iconCart, 3rem);
+		@include size(3rem);
+		
 		line-height: 1;
-		square(3);
 	}
 	&__button {
 		width: 100%;
 		appearance: none;
 	}
 	&__count {
-		absolute(top: -.8rem, left: 1.8rem);
-		rounded(50%);
-		background-color: $colors.primary;
-		color: $colors.white;
+		@include absolute($top: -.8rem, $left: 1.8rem);
+		@include rounded(50%);
+
+		background-color: $primary;
+		color: $white;
 		font-size: 1.2rem;
 		line-height: 1.8rem;
 		padding: .1rem .6rem;
@@ -23,57 +26,58 @@
 	}
 	&__item {
 		&:not(:last-child) {
-			spaced(2);
+			margin-bottom: 2rem;
 		}
 	}
 	&__list {
-		absolute(6, 0);
-		border();
-		unstyled();
-		background-color: $colors.white;
+		@include absolute(6rem, 0);
+		border: 1px solid $gray;
+		background-color: $white;
+		list-style: none;
 		margin-bottom: 0;
 		padding: 1.4rem 1rem 1rem 1rem;
 		right: -50%;
 		width: 25rem;
 		&:before {
-			absolute(-11px, 2, false, false);
-			border();
-			content();
-			rotate(45);
-			square(20px);
-			background-color: $colors.white;
+			@include absolute(-11px, 2rem, false, false);
+			@include size(20px);
+			border: 1px solid $gray;
+			content: '';
+			transform: rotate(45deg);
+			background-color: $white;
 			border-bottom: none;
 			border-right: none;
 			position: absolute;
 		}
 	}
 	&__item-name {
-		block();
-		spaced(1);
+		display: block;
 		font-size: 1.5rem;
 		line-height: 1.3em;
+		margin-bottom: 1rem;
 	}
 	&__item-remove {
-		color: $colors.primary;
+		color: $primary;
 		font-size: 1.2rem;
 		&:hover {
 			color: red;
 		}
 	}
 	&__item {
-		flexContainer();
+		@include flexContainer();
 	}
 	&__empty {
-		spaced(0);
 		padding: 10px 0;
 		text-align: center;
+		margin-bottom: 0;
 	}
 	&__item-qty {
 		font-size: 1.2rem;
 		line-height: 1;
 	}
 	&__item-image {
-		size(5.8);
+		@include size(5.8);
+		
 		line-height: 1;
 		margin-right: 1rem;
 	}

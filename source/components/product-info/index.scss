@@ -1,0 +1,32 @@
+$productInfoLayoutGutter: 6%;
+
+@tablet {
+	.l-product-info {
+		&__right {
+			@include row($productInfoLayoutGutter);
+			margin-top: 4rem;
+			margin-bottom: 4rem;
+			&-section {
+				@include column(spaced, 1, 2, $productInfoLayoutGutter);
+			}
+		}
+	}
+}
+
+@desktop {
+	.l-product-info {
+		@include row($productInfoLayoutGutter);
+		&__left,
+		&__right {
+			@include rowReset();
+			@include column(spaced, 1, 2, 6%);
+		}
+		&__right {
+			margin-top: 0;
+			margin-bottom: 0;
+			&-section {
+				@include columnReset();
+			}
+		}
+	}
+}

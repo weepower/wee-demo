@@ -1,5 +1,5 @@
 .toggle-switch {
-	$toggleColor: $colors.primary;
+	$toggleColor: $primary;
 	$toggleRadius: 4px;
 
 	border: solid 1px $toggleColor;
@@ -10,29 +10,29 @@
 	&__item {
 		$innerToggleRadius: 3px;
 
-		transition(background-color, .06s);
 		flex: auto;
 		font-size: 1.3rem;
 		padding: 0.7rem 1.1rem;
 		user-select: none;
 		text-align: center;
+		transition: background-color .06s ease-in-out;
 		&.-is-selected {
 			background-color: $toggleColor;
-			color: $colors.white;
+			color: $white;
 			&:hover {
 				background-color: $toggleColor;
-				color: $colors.white;
+				color: $white;
 			}
 		}
 		&:hover {
-			background-color: $colors.lightestGray;
+			background-color: $lightestGray;
 		}
 		&:first-child {
-			rounded(left, $innerToggleRadius);
+			@include rounded(left, $innerToggleRadius);
 			border-right: solid 1px $toggleColor;
 		}
 		&:last-child {
-			rounded(right, $innerToggleRadius);
+			@include rounded(right, $innerToggleRadius);
 		}
 	}
 }

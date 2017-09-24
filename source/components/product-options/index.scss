@@ -1,0 +1,6 @@
+.product-options {
+	@include rounded();
+	border:1px solid $gray;
+	padding: 2rem;
+	margin-bottom: 4rem;
+}
