@@ -67,6 +67,7 @@
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-pngquant": "^5.0.0",
     "imagemin-svgo": "^5.2.2",
+    "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.1",
     "onchange": "^3.2.1",
     "postcss": "^6.0.9",
