@@ -1,16 +1,19 @@
 .breadcrumbs {
-	list-style: none;
-	&__crumb {
-		display: inline-block;
-		font-size: 1.3rem;
-		margin-right: 1rem;
-		position: relative;
-		&:not(:last-child) {
-			&::after {
-				@include absolute(0, -1rem);
-				display: block;
-				content: '/';
-			}
-		}
-	}
+    list-style: none;
+
+    &__crumb {
+        display: inline-block;
+        font-size: 1.3rem;
+        margin-right: 1rem;
+        position: relative;
+
+        &:not(:last-child) {
+            &::after {
+                @include absolute(0, -1rem);
+
+                content: '/';
+                display: block;
+            }
+        }
+    }
 }

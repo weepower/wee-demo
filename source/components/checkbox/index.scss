@@ -1,46 +1,53 @@
 .checkbox {
-	$checkboxHeight: 1.6rem;
-	$borderWidth: 1px;
-	$padding: 0.6rem;
+    $checkboxHeight: 1.6rem;
+    $borderWidth: 1px;
+    $padding: 0.6rem;
 
-	display: block;
-	cursor: pointer;
-	font-size: 1.4rem;
-	&__label {
-		display: block;
-		cursor: pointer;
-		height: calc(#{$padding} * 2 + #{$checkboxHeight});
-		padding-top: $padding;
-		padding-bottom: $padding;
-		position: relative;
-		&::before {
-			@include rounded(2px);
-			@include size($checkboxHeight);
-			border: solid $borderWidth $gray;
-			content: '';
-			display: inline-block;
-			vertical-align: middle;
-		}
-	}
-	&__title {
-		display: inline-block;
-		line-height: 1em;
-		margin-left: 1rem;
-		user-select: none;
-		vertical-align: bottom;
-	}
-	&__input {
-		display: none;
-		&:checked + .checkbox__label {
-			&::after {
-				@include icon($iconCheckmark, 1.1rem);
-				color: $blue;
-				left: 0;
-				text-align: center;
-				top: calc(#{$padding} + 1px + #{$checkboxHeight} / 2);
-				position: absolute;
-				width: $checkboxHeight;
-			}
-		}
-	}
+    cursor: pointer;
+    display: block;
+    font-size: 1.4rem;
+
+    &__label {
+        cursor: pointer;
+        display: block;
+        height: calc(#{$padding} * 2 + #{$checkboxHeight});
+        padding-bottom: $padding;
+        padding-top: $padding;
+        position: relative;
+
+        &::before {
+            @include rounded(2px);
+            @include size($checkboxHeight);
+
+            border: solid $borderWidth $gray;
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    &__title {
+        display: inline-block;
+        line-height: 1em;
+        margin-left: 1rem;
+        user-select: none;
+        vertical-align: bottom;
+    }
+
+    &__input {
+        display: none;
+
+        &:checked + .checkbox__label {
+            &::after {
+                @include icon($iconCheckmark, 1.1rem);
+
+                color: $blue;
+                left: 0;
+                position: absolute;
+                text-align: center;
+                top: calc(#{$padding} + 1px + #{$checkboxHeight} / 2);
+                width: $checkboxHeight;
+            }
+        }
+    }
 }

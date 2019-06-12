@@ -7,7 +7,7 @@ import cartOptions from './index.vue';
 // we're setting the browserStorage parameter to 'session'.  This will keep
 // the data in the module synced with session storage.
 export const cartStore = $store.create('cart', {
-	browserStorage: 'session'
+    browserStorage: 'session',
 });
 
 // Create component constructor
@@ -17,14 +17,14 @@ let cart;
 
 // Register and mount component
 export default new RouteHandler({
-	init() {
-		// Instantiate the Vue component
-		cart = new Cart();
+    init() {
+        // Instantiate the Vue component
+        cart = new Cart();
 
-		// Mount the component to a targeted selection
-		cart.$mount('.js-mini-cart');
-	},
-	unload() {
-		cart.$destroy();
-	}
+        // Mount the component to a targeted selection
+        cart.$mount('.js-mini-cart');
+    },
+    unload() {
+        cart.$destroy();
+    },
 });

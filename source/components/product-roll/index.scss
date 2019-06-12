@@ -1,33 +1,38 @@
 .l-product-roll {
-	$gutter: 6%;
+    $gutter: 6%;
 
-	margin-bottom: 4rem;
-	&__inner {
-		@include inlineRow($gutter);
-	}
-	&__items {
-		@include inlineRow($gutter);
-	}
-	&__item {
-		@include inlineColumn(spaced, 1, 2, $gutter);
-		background-color: $offWhite;
-		border: 1px solid transparent;
-		text-align: center;
-		padding: 2rem;
-		margin-bottom: $gutter;
-		transition: border-color .2s ease-in-out;
-		&:hover {
-			border-color: $blue;
-		}
-	}
+    margin-bottom: 4rem;
+
+    &__inner {
+        @include inlineRow($gutter);
+    }
+
+    &__items {
+        @include inlineRow($gutter);
+    }
+
+    &__item {
+        @include inlineColumn(spaced, 1, 2, $gutter);
+
+        background-color: $offWhite;
+        border: 1px solid transparent;
+        margin-bottom: $gutter;
+        padding: 2rem;
+        text-align: center;
+        transition: border-color .2s ease-in-out;
+
+        &:hover {
+            border-color: $blue;
+        }
+    }
 }
 
-@desktop {
-	$gutter: 6%;
-	
-	.l-product-roll {
-		&__item {
-			@include inlineColumn(spaced, 1, 4, 6%);
-		}
-	}
+@include desktop {
+    $gutter: 6%;
+
+    .l-product-roll {
+        &__item {
+            @include inlineColumn(spaced, 1, 4, 6%);
+        }
+    }
 }

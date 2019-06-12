@@ -1,46 +1,56 @@
 .product-card {
-	cursor: pointer;
-	display: block;
-	margin-bottom: 4rem;
-	position: relative;
-	&:hover {
-		.product-card__image-wrap {
-			border: 1px solid $blue;
-		}
-	}
-	&__title {
-		color: $darkestGray;
-		text-align: center;
-		font-size: 1.8rem;
-		margin-bottom: 1;
-	}
-	&__subtitle {
-		text-align: center;
-	}
-	&__flag {
-		@include absolute(1rem, 1rem);
-		@includerounded(.3rem);
-		
-		color: $white;
-		font-size: 1.5rem;
-		background-color: $black;
-		padding: 1.5rem 1.7rem;
-		z-index: 1;
-		&.-alt {
-			background-color: $blue;
-		}
-	}
-	&__image {
-		margin-bottom: 1.7rem;
-		position: relative;
-		&-wrap {
-			border: 1px solid transparent;
-			background-color: $offWhite;
-			transition: border .2s ease-in-out;
-			padding: 2rem;
-		}
-	}
-	&__meta {
-		padding: 1.5rem;
-	}
+    $scope: &;
+
+    cursor: pointer;
+    display: block;
+    margin-bottom: 4rem;
+    position: relative;
+
+    &:hover {
+        #{$scope}__image-wrap {
+            border: 1px solid $blue;
+        }
+    }
+
+    &__title {
+        color: $darkestGray;
+        font-size: 1.8rem;
+        margin-bottom: 1;
+        text-align: center;
+    }
+
+    &__subtitle {
+        text-align: center;
+    }
+
+    &__flag {
+        @include absolute(1rem, 1rem);
+        @include rounded(.3rem);
+
+        background-color: $black;
+        color: $white;
+        font-size: 1.5rem;
+        padding: 1.5rem 1.7rem;
+        z-index: 1;
+
+        &.-alt {
+            background-color: $blue;
+        }
+    }
+
+    &__image {
+        margin-bottom: 1.7rem;
+        position: relative;
+
+        &-wrap {
+            background-color: $offWhite;
+            border: 1px solid transparent;
+            padding: 2rem;
+            transition: border .2s ease-in-out;
+        }
+    }
+
+    &__meta {
+        padding: 1.5rem;
+    }
 }

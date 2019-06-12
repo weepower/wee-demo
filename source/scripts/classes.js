@@ -1,6 +1,11 @@
+export const active = '-is-active';
+export const fixed = '-is-fixed';
+export const shown = '-is-shown';
+export const hidden = '-is-hidden';
+
 export default {
-	active: '-is-active',
-	fixed: '-is-fixed',
-	shown: '-is-shown',
-	hidden: '-is-hidden'
+    active,
+    fixed,
+    shown,
+    hidden,
 };

@@ -1,38 +1,45 @@
 .toggle-switch {
-	$toggleColor: $primary;
-	$toggleRadius: 4px;
+    $toggleColor: $primary;
+    $toggleRadius: 4px;
 
-	border: solid 1px $toggleColor;
-	border-radius: $toggleRadius;
-	cursor: pointer;
-	display: flex;
-	max-width: 18rem;
-	&__item {
-		$innerToggleRadius: 3px;
+    border: solid 1px $toggleColor;
+    border-radius: $toggleRadius;
+    cursor: pointer;
+    display: flex;
+    max-width: 18rem;
 
-		flex: auto;
-		font-size: 1.3rem;
-		padding: 0.7rem 1.1rem;
-		user-select: none;
-		text-align: center;
-		transition: background-color .06s ease-in-out;
-		&.-is-selected {
-			background-color: $toggleColor;
-			color: $white;
-			&:hover {
-				background-color: $toggleColor;
-				color: $white;
-			}
-		}
-		&:hover {
-			background-color: $lightestGray;
-		}
-		&:first-child {
-			@include rounded(left, $innerToggleRadius);
-			border-right: solid 1px $toggleColor;
-		}
-		&:last-child {
-			@include rounded(right, $innerToggleRadius);
-		}
-	}
+    &__item {
+        $innerToggleRadius: 3px;
+
+        flex: auto;
+        font-size: 1.3rem;
+        padding: 0.7rem 1.1rem;
+        text-align: center;
+        transition: background-color .06s ease-in-out;
+        user-select: none;
+
+        &.-is-selected {
+            background-color: $toggleColor;
+            color: $white;
+
+            &:hover {
+                background-color: $toggleColor;
+                color: $white;
+            }
+        }
+
+        &:hover {
+            background-color: $lightestGray;
+        }
+
+        &:first-child {
+            @include rounded(left, $innerToggleRadius);
+
+            border-right: solid 1px $toggleColor;
+        }
+
+        &:last-child {
+            @include rounded(right, $innerToggleRadius);
+        }
+    }
 }

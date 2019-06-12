@@ -1,5 +1,7 @@
-@mobileLandscape { html { font-family: '2'; } }
-@tablet { html { font-family: '3'; } }
-@desktop { html { font-family: '4'; } }
-@desktop2 { html { font-family: '5'; } }
-@desktop3 { html { font-family: '6'; } }
+/* stylelint-disable */
+
+@include mobileLandscape { html { font-family: '2'; } }
+@include tablet { html { font-family: '3'; } }
+@include desktop { html { font-family: '4'; } }
+@include desktop2 { html { font-family: '5'; } }
+@include desktop3 { html { font-family: '6'; } }

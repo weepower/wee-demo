@@ -1,3 +1,6 @@
+// Override core variables or add custom values here
+// Default settings available at https://www.weepower.com/style/variables
+
 $primary: #111;
 $blue: #5789ff;
 $lightBlue: opacify($blue, .8);
@@ -14,3 +17,5 @@ $iconCart: '\e93a';
 $iconClose: '\ea0f';
 
 $iconFont: icomoon;
+
+@import '~wee-core/styles/variables.scss';

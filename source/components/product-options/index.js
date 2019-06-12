@@ -8,22 +8,22 @@ export const Options = Vue.extend(productOptions);
 
 // Any one off class references we can store in a different variable.
 const classes = {
-	target: '.js-product-options'
+    target: '.js-product-options',
 };
 let options;
 
 // Register and mount component
 export default new RouteHandler({
-	init() {
-		// Create and mount the component to a targeted selection
-		options = new Options().$mount(classes.target);
-	},
-	update() {
-		// Whenever the page is updated, remount the Vue component.
-		$(classes.target).append(options.$el);
-	},
-	unload() {
-		// Destroy the component on unload
-		options.$destroy();
-	}
+    init() {
+        // Create and mount the component to a targeted selection
+        options = new Options().$mount(classes.target);
+    },
+    update() {
+        // Whenever the page is updated, remount the Vue component.
+        $(classes.target).append(options.$el);
+    },
+    unload() {
+        // Destroy the component on unload
+        options.$destroy();
+    },
 });

@@ -1,24 +1,27 @@
 .l-header {
-	@include flexContainer($justify: space-between);
-	background-color: $white;
-	padding: 4rem 2.2rem;
-	position: relative;
-	transition: top .2s ease-in-out;
-	z-index: 100;
-	&.-is-fixed {
-		position: fixed;
-		top: -11.3rem;
-		left: 0;
-		right: 0;
-	}
-	&.-is-shown {
-		top: 0;
-	}
+    @include flexContainer($justify: space-between);
+
+    background-color: $white;
+    padding: 4rem 2.2rem;
+    position: relative;
+    transition: top .2s ease-in-out;
+    z-index: 100;
+
+    &.-is-fixed {
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: -11.3rem;
+    }
+
+    &.-is-shown {
+        top: 0;
+    }
 }
 
-@desktop {
-	.l-header {
-		padding-left: 3.5rem;
-		padding-right: 3.5rem;
-	}
+@include desktop {
+    .l-header {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
 }

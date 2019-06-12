@@ -1,80 +1,91 @@
 .image-gallery {
-	$gutter: 4%;
+    $gutter: 4%;
 
-	&__main {
-		width: 100%;
-		&-wrap {
-			background-color: $offWhite;
-			padding: 2rem;
-			margin-bottom: 1.5rem;
-		}
-	}
-	&__thumbs {
-		@include inlineRow($gutter);
-		
-		margin-bottom: 2rem;
-	}
-	&__thumb {
-		margin-bottom: 1rem;
-		&-wrap {
-			@include inlineColumn(spaced, 1, 3, $gutter);
-			
-			background-color: $offWhite;
-			border: 1px solid transparent;
-			cursor: pointer;
-			margin-bottom: $gutter;
-			padding: 1rem;
-			position: relative;
-			transition: border-color .2s ease-in-out;
-			&:hover {
-				border: 1px solid $blue;
-			}
-			&.-is-active {
-				border: 1px solid $blue;
-			}
-		}
-	}
+    &__main {
+        width: 100%;
+
+        &-wrap {
+            background-color: $offWhite;
+            margin-bottom: 1.5rem;
+            padding: 2rem;
+        }
+    }
+
+    &__thumbs {
+        @include inlineRow($gutter);
+
+        margin-bottom: 2rem;
+    }
+
+    &__thumb {
+        margin-bottom: 1rem;
+
+        &-wrap {
+            @include inlineColumn(spaced, 1, 3, $gutter);
+
+            background-color: $offWhite;
+            border: 1px solid transparent;
+            cursor: pointer;
+            margin-bottom: $gutter;
+            padding: 1rem;
+            position: relative;
+            transition: border-color .2s ease-in-out;
+
+            &:hover {
+                border: 1px solid $blue;
+            }
+
+            &.-is-active {
+                border: 1px solid $blue;
+            }
+        }
+    }
 }
 
-@tablet {
-	.image-gallery {
-		$gutter: 2%;
+@include tablet {
+    .image-gallery {
+        $gutter: 2%;
 
-		@include row($gutter);
-		&__main {
-			&-wrap {
-				@include column(spaced, 10, 12, $gutter);
-			}
-		}
-		&__thumbs {
-			@include column(spaced, 2, 12, $gutter);
-		}
-		&__thumb {
-			&-wrap {
-				display: block;
-				margin-left: 0;
-				width: 100%;
-			}
-		}
-	}
+        @include row($gutter);
+
+        &__main {
+            &-wrap {
+                @include column(spaced, 10, 12, $gutter);
+            }
+        }
+
+        &__thumbs {
+            @include column(spaced, 2, 12, $gutter);
+        }
+
+        &__thumb {
+            &-wrap {
+                display: block;
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    }
 }
 
-@desktop {
-	.image-gallery {
-		$gutter: 6%;
+@include desktop {
+    .image-gallery {
+        $gutter: 6%;
 
-		&__main-wrap {
-			@include columnReset();
-			@include rowReset();
-		}
-		&__thumbs {
-			@include columnReset();
-			@include row($gutter);
-		}
-		&__thumb {
-			&-wrap {
-				@include column(spaced, 1, 4, $gutter);
-			}
-		}
-	}
+        &__main-wrap {
+            @include columnReset();
+            @include rowReset();
+        }
+
+        &__thumbs {
+            @include columnReset();
+            @include row($gutter);
+        }
+
+        &__thumb {
+            &-wrap {
+                @include column(spaced, 1, 4, $gutter);
+            }
+        }
+    }
 }

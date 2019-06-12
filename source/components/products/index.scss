@@ -1,24 +1,25 @@
 $productLayoutGutter: 3%;
 
 .l-products {
-	margin-bottom: 4rem;
+    margin-bottom: 4rem;
 }
 
-@tablet {
-	.l-products {
-		@include inlineRow($productLayoutGutter);
-		
-		margin-bottom: 4rem;
-		&__item {
-			@include inlineColumn(spaced, 1, 2, $productLayoutGutter);
-		}
-	}
+@include tablet {
+    .l-products {
+        @include inlineRow($productLayoutGutter);
+
+        margin-bottom: 4rem;
+
+        &__item {
+            @include inlineColumn(spaced, 1, 2, $productLayoutGutter);
+        }
+    }
 }
 
-@desktop {
-	.l-products {
-		&__item {
-			@include inlineColumn(spaced, 1, 3, $productLayoutGutter);
-		}
-	}
+@include desktop {
+    .l-products {
+        &__item {
+            @include inlineColumn(spaced, 1, 3, $productLayoutGutter);
+        }
+    }
 }

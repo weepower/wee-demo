@@ -1,0 +1,80 @@
+// Import wee-core reset and components - remove unused imports
+@import '~wee-core/styles/reset';
+@import '~wee-core/styles/components/helpers';
+@import '~wee-core/styles/components/buttons';
+@import '~wee-core/styles/components/code';
+@import '~wee-core/styles/components/forms';
+@import '~wee-core/styles/components/tables';
+@import './print.scss';
+
+// Import generated media query file for screen mapping
+@import '../../build/temp/responsive';
+
+#global {
+    // Global helpers and state modifiers
+}
+
+@include loadFont(icomoon);
+
+body {
+    background-color: $white;
+}
+
+.container {
+    @include centeredBlock(144rem);
+
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+a {
+    color: $blue;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+        color: $lightBlue;
+    }
+}
+
+.button {
+    &.-small {
+        padding: 0.7rem 1.4rem;
+    }
+}
+
+// Logo
+
+.logo {
+    &__ee {
+        opacity: 1;
+        transition: all 0.2s ease-in-out;
+
+        &.-is-hidden {
+            opacity: 0;
+        }
+    }
+}
+
+// Main
+
+.content {
+    min-height: 60rem;
+    overflow-y: hidden;
+
+    &.-is-fixed {
+        margin-top: 11.3rem;
+    }
+}
+
+// Transitions
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}

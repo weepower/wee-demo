@@ -1,10 +1,12 @@
 .product-card-mini {
-	margin-left: auto;
-	margin-right: auto;
-	&__image {
-		margin-bottom: 2rem;
-	}
-	&__price {
-		text-align: center;
-	}
+    margin-left: auto;
+    margin-right: auto;
+
+    &__image {
+        margin-bottom: 2rem;
+    }
+
+    &__price {
+        text-align: center;
+    }
 }

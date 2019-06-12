@@ -3,34 +3,39 @@ import $ from 'wee-dom';
 import $events from 'wee-events';
 
 // We store any commonly referenced class names in it's own file and import it
-import classes from '../../scripts/classes';
+import { active } from '../../scripts/classes';
 
 // Any one off class references we can store in a different variable.
 const localClasses = {
-	wrap: '.js-gallery-thumb-wrap'
+    wrap: '.js-gallery-thumb-wrap',
+    thumb: '.js-gallery-thumb',
+    mainImage: '.js-gallery-main-image',
 };
 
 function bindEvents() {
-	$events.on(localClasses.wrap, 'click.gallery', (e, el) => {
-		const $thumb = $(el),
-			$thumbImage = $thumb.find('.js-gallery-thumb');
+    const { wrap, thumb, mainImage } = localClasses;
 
-		$(localClasses.wrap).removeClass(classes.active);
+    $events.on(wrap, 'click.gallery', (e, el) => {
+        const $thumb = $(el);
+        const $thumbImage = $thumb.find(thumb);
 
-		$('.js-gallery-main-image').attr({
-			src: $thumbImage.attr('src'),
-			alt: $thumbImage.attr('alt')
-		});
+        $(wrap).removeClass(active);
 
-		$thumb.addClass(classes.active);
-	});
+        $(mainImage).attr({
+            src: $thumbImage.attr('src'),
+            alt: $thumbImage.attr('alt'),
+        });
+
+        $thumb.addClass(active);
+    });
 }
 
 export default new RouteHandler({
-	init() {
-		bindEvents();
-	},
-	// On unload, the router will attempt to remove any events or mappings that use
-	// this namespace
-	unload: 'gallery'
+    init() {
+        bindEvents();
+    },
+
+    // On unload, the router will attempt to remove any events or mappings that use
+    // this namespace
+    unload: 'gallery',
 });

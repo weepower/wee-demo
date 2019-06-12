@@ -10,35 +10,50 @@ import productOptions from '../components/product-options';
 import relatedProducts from '../components/related-products';
 import alsoPurchased from '../components/also-purchased';
 
+const common = [
+    header,
+    miniCart,
+];
+
 $router({
-	transition: {
-		target: '.content',
-		class: '-is-loading',
-		timeout: 200
-	},
-	scrollBehavior(to, from, savedPosition) {
-		if (savedPosition) {
-			return savedPosition;
-		}
+    transition: {
+        target: '.content',
+        class: '-is-loading',
+        timeout: 200,
+    },
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        }
 
-		if (to.path === '/products') {
-			return false;
-		}
+        if (to.path === '/products') {
+            return false;
+        }
 
-		return { x: 0, y: 0 };
-	}
+        return { x: 0, y: 0 };
+    },
 }).pjax({
-	partials: ['.content']
+    partials: ['.content'],
 }).beforeEach((to, from, next) => {
-	$mediator.emit('navigation');
-	next();
+    $mediator.emit('navigation');
+    next();
 }).map([
-	{
-		path: '/products',
-		handler: [header, miniCart, filters, productIndex]
-	},
-	{
-		path: '/products/:slug',
-		handler: [header, miniCart, imageGallery, productOptions, relatedProducts, alsoPurchased]
-	}
+    {
+        path: '/products',
+        handler: [
+            filters,
+            productIndex,
+            ...common,
+        ],
+    },
+    {
+        path: '/products/:slug',
+        handler: [
+            imageGallery,
+            productOptions,
+            relatedProducts,
+            alsoPurchased,
+            ...common,
+        ],
+    },
 ]).run();

@@ -1,3 +1,3 @@
 export function isHidden($el) {
-	return $el.hasClass('js-hide');
+    return $el.hasClass('js-hide');
 }

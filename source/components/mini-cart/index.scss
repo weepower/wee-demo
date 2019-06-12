@@ -1,95 +1,109 @@
 .mini-cart {
-	@include size(3rem);
-	
-	cursor: pointer;
-	position: relative;
-	&::after {
-		@include icon($iconCart, 3rem);
-		@include size(3rem);
-		
-		line-height: 1;
-	}
-	&__button {
-		width: 100%;
-		appearance: none;
-	}
-	&__count {
-		@include absolute($top: -.8rem, $left: 1.8rem);
-		@include rounded(50%);
+    @include size(3rem);
 
-		background-color: $primary;
-		color: $white;
-		font-size: 1.2rem;
-		line-height: 1.8rem;
-		padding: .1rem .6rem;
-		text-align: center;
-	}
-	&__item {
-		&:not(:last-child) {
-			margin-bottom: 2rem;
-		}
-	}
-	&__list {
-		@include absolute(6rem, 0);
-		border: 1px solid $gray;
-		background-color: $white;
-		list-style: none;
-		margin-bottom: 0;
-		padding: 1.4rem 1rem 1rem 1rem;
-		right: -50%;
-		width: 25rem;
-		&:before {
-			@include absolute(-11px, 2rem, false, false);
-			@include size(20px);
-			border: 1px solid $gray;
-			content: '';
-			transform: rotate(45deg);
-			background-color: $white;
-			border-bottom: none;
-			border-right: none;
-			position: absolute;
-		}
-	}
-	&__item-name {
-		display: block;
-		font-size: 1.5rem;
-		line-height: 1.3em;
-		margin-bottom: 1rem;
-	}
-	&__item-remove {
-		color: $primary;
-		font-size: 1.2rem;
-		&:hover {
-			color: red;
-		}
-	}
-	&__item {
-		@include flexContainer();
-	}
-	&__empty {
-		padding: 10px 0;
-		text-align: center;
-		margin-bottom: 0;
-	}
-	&__item-qty {
-		font-size: 1.2rem;
-		line-height: 1;
-	}
-	&__item-image {
-		@include size(5.8rem);
-		
-		line-height: 1;
-		margin-right: 1rem;
-	}
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+        @include icon($iconCart, 3rem);
+        @include size(3rem);
+
+        line-height: 1;
+    }
+
+    &__button {
+        appearance: none;
+        width: 100%;
+    }
+
+    &__count {
+        @include absolute($top: -.8rem, $left: 1.8rem);
+        @include rounded(50%);
+
+        background-color: $primary;
+        color: $white;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        padding: .1rem .6rem;
+        text-align: center;
+    }
+
+    &__item {
+        @include flexContainer();
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__list {
+        @include absolute(6rem, 0);
+
+        background-color: $white;
+        border: 1px solid $gray;
+        list-style: none;
+        margin-bottom: 0;
+        padding: 1.4rem 1rem 1rem 1rem;
+        right: -50%;
+        width: 25rem;
+
+        &::before {
+            @include absolute(-11px, 2rem, false, false);
+            @include size(20px);
+
+            background-color: $white;
+            border: 1px solid $gray;
+            border-bottom: none;
+            border-right: none;
+            content: '';
+            position: absolute;
+            transform: rotate(45deg);
+        }
+    }
+
+    &__item-name {
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+        margin-bottom: 1rem;
+    }
+
+    &__item-remove {
+        color: $primary;
+        font-size: 1.2rem;
+
+        &:hover {
+            color: red;
+        }
+    }
+
+    &__empty {
+        margin-bottom: 0;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    &__item-qty {
+        font-size: 1.2rem;
+        line-height: 1;
+    }
+
+    &__item-image {
+        @include size(5.8rem);
+
+        line-height: 1;
+        margin-right: 1rem;
+    }
 }
 
-@desktop2 {
-	.cart {
-		&__list {
-			right: -23px;
-			&:before {
-				right: 2.5rem;
-			}
-		}
-	}
+@include desktop2 {
+    .cart {
+        &__list {
+            right: -23px;
+
+            &::before {
+                right: 2.5rem;
+            }
+        }
+    }
 }

@@ -9,26 +9,24 @@ let related;
 
 // Register and mount component
 export default new RouteHandler({
-	init() {
-		// This showcases our ability to pass in methods and data to our component.
-		// Any data passed into the component constructor will be merged with the
-		// components data, allowing us to initialize it with data that we can fetch
-		// from an API, or from our router.
-		related = new RelatedProducts({
-			name: 'related-products',
-			data() {
-				return {
-					title: 'Related Products',
-					url: '/ajax/products/related'
-				}
-			}
-		});
+    init() {
+        // This showcases our ability to pass in methods and data to our component.
+        // Any data passed into the component constructor will be merged with the
+        // components data, allowing us to initialize it with data that we can fetch
+        // from an API, or from our router.
+        related = new RelatedProducts({
+            name: 'RelatedProducts',
+            data: () => ({
+                title: 'Related Products',
+                url: '/ajax/products/related',
+            }),
+        });
 
-		// Whenever the page is updated, remount the Vue component.
-		related.$mount('.js-related-products');
-	},
-	unload() {
-		// Destroy the component on unload
-		related.$destroy();
-	}
+        // Whenever the page is updated, remount the Vue component.
+        related.$mount('.js-related-products');
+    },
+    unload() {
+        // Destroy the component on unload
+        related.$destroy();
+    },
 });

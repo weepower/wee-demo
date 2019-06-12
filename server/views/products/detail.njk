@@ -1,15 +1,15 @@
 {% if pjax %}
-	{% extends 'layouts/pjax.njk' %}
+    {% extends 'layouts/pjax.njk' %}
 {% else %}
-	{% extends 'layouts/master.njk' %}
+    {% extends 'layouts/master.njk' %}
 {% endif %}
 
 {% block content %}
-		<div class="l-product-detail">
-			{% include 'components/breadcrumbs.njk' %}
-			{% include 'components/product-info.njk' %}
+        <div class="l-product-detail">
+            {% include 'components/breadcrumbs.njk' %}
+            {% include 'components/product-info.njk' %}
 
-			<div class="js-related-products"></div>
-			<div class="js-also-purchased"></div>
-		</div>
+            <div class="js-related-products"></div>
+            <div class="js-also-purchased"></div>
+        </div>
 {% endblock %}

@@ -1,32 +1,35 @@
-const fs = require('fs-extra');
-const buildPath = __dirname;
-const projectPath = buildPath.split('/').slice(0, -1).join('/');
-const packageJsonPath = projectPath + '/package.json';
-const weeJsonPath = projectPath + '/wee.json';
-const config = require(weeJsonPath);
-const sourcePath = `${projectPath}/${config.paths.source}`;
-const rootPath = `${projectPath}/${config.paths.root}`;
-const modulesPath = projectPath + '/node_modules';
+const path = require('path');
+
+const build = __dirname;
+const project = path.resolve(build, '../');
+const wee = path.resolve(project, 'wee.config.js');
+const packageJson = path.resolve(project, 'package.json');
+const config = require(wee);
+const source = path.resolve(project, config.paths.source);
+const root = path.resolve(project, config.paths.root);
+const assets = path.resolve(root, config.paths.assets);
+const nodeModules = path.resolve(project, 'node_modules');
+const temp = path.resolve(build, 'temp');
 
 module.exports = {
-	project: projectPath,
-	packageJson: packageJsonPath,
-	wee: weeJsonPath,
-	temp: buildPath + '/temp',
-	build: buildPath,
-	root: rootPath,
-	source: sourcePath,
-	styles: `${sourcePath}/styles`,
-	scripts: `${sourcePath}/scripts`,
-	components: `${sourcePath}/components`,
-	images: `${sourcePath}/images`,
-	fonts: `${sourcePath}/fonts`,
-	output: {
-		styles: `${rootPath}/${config.paths.assets}/styles`,
-		scripts: `${rootPath}/${config.paths.assets}/scripts`,
-		images: `${rootPath}/${config.paths.assets}/images`,
-		fonts: `${rootPath}/${config.paths.assets}/fonts`
-	},
-	nodeModules: modulesPath,
-	weeCore: modulesPath + '/wee-core'
+    temp,
+    project,
+    packageJson,
+    build,
+    root,
+    source,
+    assets,
+    styles: path.resolve(source, 'styles'),
+    scripts: path.resolve(source, 'scripts'),
+    components: path.resolve(source, 'components'),
+    images: path.resolve(source, 'images'),
+    fonts: path.resolve(source, 'fonts'),
+    output: {
+        styles: path.resolve(assets, 'styles'),
+        scripts: path.resolve(assets, 'scripts'),
+        images: path.resolve(assets, 'images'),
+        fonts: path.resolve(assets, 'fonts'),
+    },
+    nodeModules,
+    weeCore: path.resolve(nodeModules, 'wee-core'),
 };
