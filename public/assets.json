@@ -1,0 +1,4 @@
+{
+  "app.css": "app.min.css",
+  "app.js": "app.bundle.js"
+}

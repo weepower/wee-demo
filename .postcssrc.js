@@ -6,11 +6,11 @@ module.exports = {
         require('css-mqpacker')({
             sort: true,
         }),
-        // require('cssnano')({
-        //     safe: true,
-        //     preset: ['default', {
-        //         calc: false,
-        //     }],
-        // }),
+        require('cssnano')({
+            safe: true,
+            preset: ['default', {
+                calc: false,
+            }],
+        }),
     ],
 };

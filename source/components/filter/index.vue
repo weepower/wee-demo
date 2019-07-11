@@ -25,12 +25,12 @@ import CheckboxList from '../checkbox-list/index.vue';
 import ColorSelector from '../color-selector/index.vue';
 
 export default {
-    name: 'Filter',
+    name: 'VFilter',
     components: { CheckboxList, ToggleSwitch, ColorSelector },
     props: {
         title: { type: String, default: '' },
         type: { type: String, default: '' },
-        filterValue: { type: String, default: '' },
+        filterValue: { type: [String, Array] },
         filterData: { type: Array, default: () => [] },
         filterOptions: { type: Object, default: () => ({}) },
     },

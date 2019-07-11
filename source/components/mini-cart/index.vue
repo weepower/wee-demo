@@ -67,7 +67,7 @@ import $ from 'wee-dom';
 import $events from 'wee-events';
 import $mediator from 'wee-mediator';
 import { uri } from 'wee-location';
-import { cartStore } from './index';
+import { cartStore } from './store';
 
 export default {
     name: 'Cart',

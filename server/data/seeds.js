@@ -88,7 +88,7 @@ function getImage(product) {
     const images = [];
 
     product.colors.forEach((color) => {
-        images.push(`/assets/images/products/${type}-${color.title}.jpg`);
+        images.push(`/local-assets/images/products/${type}-${color.title}.jpg`);
     });
 
     return images;
